@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/sprite_4.png-d5c7f62380d8ac9902bf73c2d10361c3.res"
+group_file="res://Characters/Test_enemy/enemy_atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://Characters/Test_enemy/sprite_4.png"
+dest_files=[ "res://.import/sprite_4.png-d5c7f62380d8ac9902bf73c2d10361c3.res" ]
+
+[params]
+
+atlas_file="res://Characters/Test_enemy/enemy_atlas.png"
+import_mode=0
+crop_to_region=false
