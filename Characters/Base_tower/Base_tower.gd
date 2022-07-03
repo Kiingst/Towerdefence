@@ -1,6 +1,8 @@
 extends Area2D
 
 export (int) var Tower_Damage
+var can_shoot = false
+onready var attack_range = $Base_tower
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -13,11 +15,26 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 :
+		attack_enemy()
 
 
-func _on_Base_tower_area_entered(area):
-	if area.has_method('take_damage'):
-		area.take_damage(Tower_Damage)
-		$Reload.start()
+func _on_Reload_timeout():
+	can_shoot = true
+	
+
+func attack_enemy():
+	var x = $Attack_Range.get_overlapping_areas()
+	var y = x[0]
+	if x.size() > 0:  
+		if y.has_method('take_damage'):
+			y.take_damage(Tower_Damage)
+			$Reload.start()
+			can_shoot = false
+
+
+func _on_Attack_Range_area_entered(area):
+	if "enemy" in area.name:
+		can_shoot =  true
+

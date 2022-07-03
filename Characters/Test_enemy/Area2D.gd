@@ -16,5 +16,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health == 0:
+		death(delta)
 	path_follow.set_offset(path_follow.get_offset() + speed * delta)
 
+func take_damage(damage):
+	health -= damage
+	print(health)
+
+func death(delta):
+	path_follow.offset = 0.0
+	queue_free()

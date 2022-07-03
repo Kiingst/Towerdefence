@@ -20,17 +20,19 @@ animations = [ {
 extents = Vector2( 9.5, 8 )
 
 [node name="Test_enemy" type="PathFollow2D"]
+offset = 0.31
 rotate = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="enemy" type="Area2D" parent="."]
 script = ExtResource( 7 )
 speed = 50
+health = 3
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="enemy"]
 frames = SubResource( 1 )
 frame = 3
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2( -0.5, 2 )
 shape = SubResource( 2 )
