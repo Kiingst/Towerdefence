@@ -32,9 +32,15 @@ func attack_enemy():
 			y.take_damage(Tower_Damage)
 			$Reload.start()
 			can_shoot = false
+			shoot_at_enemy(y)
 
 
 func _on_Attack_Range_area_entered(area):
 	if "enemy" in area.name:
 		can_shoot =  true
+
+func shoot_at_enemy(enemy):
+	var vec_to_enemy = enemy.global_position - global_position
+	vec_to_enemy = vec_to_enemy.normalized()
+	$test_sword.global_rotation = atan2(vec_to_enemy.y, vec_to_enemy.x)
 
