@@ -32,3 +32,5 @@ offset = 0.0
 
 [node name="Base_tower" parent="." instance=ExtResource( 3 )]
 position = Vector2( 495, 462 )
+
+[connection signal="fire" from="Base_tower" to="." method="_on_Base_tower_fire"]

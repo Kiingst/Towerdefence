@@ -14,3 +14,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Base_tower_fire(projectile, _position, _direction):
+	var p = projectile.instance()
+	add_child(p)
+	p.start(_position, _direction)
+	

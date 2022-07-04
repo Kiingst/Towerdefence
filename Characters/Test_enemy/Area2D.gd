@@ -11,19 +11,21 @@ export (int) var health
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$HealthBar.max_value = health
+	$HealthBar.value = health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$HealthBar.value = health
 	if health == 0:
-		death(delta)
+		death()
 	path_follow.set_offset(path_follow.get_offset() + speed * delta)
 
 func take_damage(damage):
 	health -= damage
+	$HealthBar.visible = true
 	print(health)
 
-func death(delta):
-	path_follow.offset = 0.0
+func death():
 	queue_free()
