@@ -6,7 +6,7 @@
 [ext_resource path="res://Characters/Test_enemy/sprite_3.png" type="Texture" id=4]
 [ext_resource path="res://Characters/Test_enemy/sprite_4.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Test_enemy/sprite_1.png" type="Texture" id=6]
-[ext_resource path="res://Characters/Test_enemy/Area2D.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Test_enemy/Base_enemy.gd" type="Script" id=7]
 [ext_resource path="res://Characters/HealthBar/healthbaroutline.png" type="Texture" id=8]
 [ext_resource path="res://Characters/HealthBar/healthbarinner.png" type="Texture" id=9]
 
@@ -27,8 +27,8 @@ rotate = false
 
 [node name="enemy" type="Area2D" parent="."]
 script = ExtResource( 7 )
-speed = 50
-health = 3
+speed = 200
+health = 5
 
 [node name="HealthBar" type="TextureProgress" parent="enemy"]
 visible = false

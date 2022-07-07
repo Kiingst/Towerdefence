@@ -2,7 +2,7 @@ extends Area2D
 
 export (int) var Bullet_Speed
 export (int) var Bullet_Damage
-export (int) var Bullet_lifetime
+export (float) var Bullet_lifetime
 
 func _ready():
 	pass
@@ -13,6 +13,7 @@ func start(_position, _direction):
 	position = _position
 	rotation = _direction.angle()
 	$lifetime.wait_time = Bullet_lifetime
+	$lifetime.start()
 	Bullet_velocity = _direction * Bullet_Speed
 
 func _process(delta):
