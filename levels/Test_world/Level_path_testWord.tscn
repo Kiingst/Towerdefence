@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/Test_world/Level_path.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -15, 527, 0, 0, 0, 0, 529, 528, 0, 0, 0, 0, 527, 337, 0, 0, 0, 0, 207, 336, 0, 0, 0, 0, 209, 47, 0, 0, 0, 0, 429, 46, 0, 0, 0, 0, 433, 428, 0, 0, 0, 0, 1040, 430 )
+}
+
+[node name="Level_path" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 2 )

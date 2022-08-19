@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/Test_enemy/sprite_0.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Test_enemy/sprite_5.png" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Characters/Test_enemy/sprite_3.png" type="Texture" id=4]
 [ext_resource path="res://Characters/Test_enemy/sprite_4.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Test_enemy/sprite_1.png" type="Texture" id=6]
-[ext_resource path="res://Characters/Test_enemy/Area2D.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Test_enemy/Base_enemy.gd" type="Script" id=7]
+[ext_resource path="res://Characters/HealthBar/healthbaroutline.png" type="Texture" id=8]
+[ext_resource path="res://Characters/HealthBar/healthbarinner.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,17 +22,29 @@ animations = [ {
 extents = Vector2( 9.5, 8 )
 
 [node name="Test_enemy" type="PathFollow2D"]
+offset = 0.31
 rotate = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="enemy" type="Area2D" parent="."]
 script = ExtResource( 7 )
-speed = 50
+speed = 200
+health = 5
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+[node name="HealthBar" type="TextureProgress" parent="enemy"]
+visible = false
+margin_left = -16.0
+margin_top = -28.0
+margin_right = 24.0
+margin_bottom = 12.0
+max_value = 0.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="enemy"]
 frames = SubResource( 1 )
-frame = 3
+frame = 4
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2( -0.5, 2 )
 shape = SubResource( 2 )
