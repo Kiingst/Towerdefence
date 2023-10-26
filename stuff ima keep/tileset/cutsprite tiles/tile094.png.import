@@ -1,35 +1,34 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/tile094.png-44b16e54a3a5714ead0b9a4fbdc1f406.stex"
+type="CompressedTexture2D"
+uid="uid://ctpxeb0v270xx"
+path="res://.godot/imported/tile094.png-befc3aa3ebf0f2fa185e1d37aa66fa5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset/cutsprite tiles/tile094.png"
-dest_files=[ "res://.import/tile094.png-44b16e54a3a5714ead0b9a4fbdc1f406.stex" ]
+source_file="res://stuff ima keep/tileset/cutsprite tiles/tile094.png"
+dest_files=["res://.godot/imported/tile094.png-befc3aa3ebf0f2fa185e1d37aa66fa5f.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

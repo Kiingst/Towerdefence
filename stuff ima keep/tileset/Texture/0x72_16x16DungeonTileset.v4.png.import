@@ -1,18 +1,20 @@
 [remap]
 
 importer="texture_atlas"
-type="Texture"
-path="res://.import/0x72_16x16DungeonTileset.v4.png-95fb33532e719899fc749164042d7cb3.res"
+type="Texture2D"
+uid="uid://bedawj6ys37bk"
+path="res://.godot/imported/0x72_16x16DungeonTileset.v4.png-3ae7724b133dd6f91264318abfbd4c17.res"
 group_file="res://tileset/tileatlas.png"
 valid=true
 [deps]
 
 
-source_file="res://tileset/Texture/0x72_16x16DungeonTileset.v4.png"
-dest_files=[ "res://.import/0x72_16x16DungeonTileset.v4.png-95fb33532e719899fc749164042d7cb3.res" ]
+source_file="res://stuff ima keep/tileset/Texture/0x72_16x16DungeonTileset.v4.png"
+dest_files=["res://.godot/imported/0x72_16x16DungeonTileset.v4.png-3ae7724b133dd6f91264318abfbd4c17.res"]
 
 [params]
 
 atlas_file="res://tileset/tileatlas.png"
 import_mode=0
 crop_to_region=false
+trim_alpha_border_from_region=true

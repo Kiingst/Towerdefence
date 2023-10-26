@@ -1,18 +1,20 @@
 [remap]
 
 importer="texture_atlas"
-type="Texture"
-path="res://.import/sprite_1.png-f2905ce3f191451d79e36af30bde268e.res"
+type="Texture2D"
+uid="uid://cehk0idywchh2"
+path="res://.godot/imported/sprite_1.png-7d832a0950eec0cb3a5eb32410dc4a8f.res"
 group_file="res://Characters/Test_enemy/enemy_atlas.png"
 valid=true
 [deps]
 
 
-source_file="res://Characters/Test_enemy/sprite_1.png"
-dest_files=[ "res://.import/sprite_1.png-f2905ce3f191451d79e36af30bde268e.res" ]
+source_file="res://stuff ima keep/Characters/Test_enemy/sprite_1.png"
+dest_files=["res://.godot/imported/sprite_1.png-7d832a0950eec0cb3a5eb32410dc4a8f.res"]
 
 [params]
 
 atlas_file="res://Characters/Test_enemy/enemy_atlas.png"
 import_mode=0
 crop_to_region=false
+trim_alpha_border_from_region=true
