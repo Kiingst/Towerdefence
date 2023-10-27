@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://oighgucc4rm4"]
+
+[ext_resource type="Texture2D" uid="uid://buc4dl1uli728" path="res://Core/Levels/Test_Folder/Test_Tiles.png" id="1_5sd7d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k6ymn"]
+texture = ExtResource("1_5sd7d")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ly6s1"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_k6ymn")
+
+[node name="Test_TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_ly6s1")
+format = 2
