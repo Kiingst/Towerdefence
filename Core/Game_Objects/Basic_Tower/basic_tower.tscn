@@ -1,19 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqvmu6o3c2am6"]
+[gd_scene load_steps=5 format=3 uid="uid://dqvmu6o3c2am6"]
 
 [ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="1_go6sk"]
+[ext_resource type="Script" path="res://Core/Game_Objects/Basic_Tower/basic_tower.gd" id="1_itmin"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wadu"]
 radius = 250.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv3ll"]
+size = Vector2(65, 63)
+
 [node name="Basic_Tower" type="Node2D"]
+script = ExtResource("1_itmin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_go6sk")
 
 [node name="Attack_Range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Range"]
 shape = SubResource("CircleShape2D_3wadu")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Clickable_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable_Area"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_uv3ll")
