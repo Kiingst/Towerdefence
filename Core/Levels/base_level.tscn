@@ -12,8 +12,5 @@ script = ExtResource("1_pgskp")
 [node name="Basic_Tower" parent="." instance=ExtResource("2_gx3o0")]
 position = Vector2(736, 223)
 
-[node name="Basic_Tower2" parent="." instance=ExtResource("2_gx3o0")]
-position = Vector2(157, 222)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

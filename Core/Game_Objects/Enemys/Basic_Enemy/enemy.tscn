@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx8tifjghr6x1"]
+
+[ext_resource type="Script" path="res://Core/Game_Objects/Enemys/Basic_Enemy/enemy.gd" id="1_1h8b6"]
+[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="2_toos6"]
+[ext_resource type="Texture2D" uid="uid://vahpgx1ahy5g" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar0.png" id="3_6nvo2"]
+[ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_6dn16"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7li"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="PathFollow2D"]
+script = ExtResource("1_1h8b6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_toos6")
+
+[node name="enemy" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+shape = SubResource("RectangleShape2D_ig7li")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = 18.0
+offset_right = 32.0
+offset_bottom = 23.0
+texture_under = ExtResource("3_6nvo2")
+texture_progress = ExtResource("4_6dn16")

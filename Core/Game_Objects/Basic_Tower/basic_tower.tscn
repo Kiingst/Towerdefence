@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqvmu6o3c2am6"]
+[gd_scene load_steps=7 format=3 uid="uid://dqvmu6o3c2am6"]
 
 [ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="1_go6sk"]
 [ext_resource type="Script" path="res://Core/Game_Objects/Basic_Tower/basic_tower.gd" id="1_itmin"]
+[ext_resource type="Texture2D" uid="uid://vahpgx1ahy5g" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar0.png" id="3_6tvxa"]
+[ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_uux3p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wadu"]
 radius = 250.0
@@ -17,6 +19,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_go6sk")
 
 [node name="Attack_Range" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Range"]
@@ -31,12 +34,16 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_uv3ll")
 
 [node name="Reload_Timer" type="Timer" parent="."]
-wait_time = 0.25
 one_shot = true
 
-[node name="Ammo" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Ammo_bar" type="TextureProgressBar" parent="."]
+offset_left = -33.0
+offset_top = 24.0
+offset_right = 31.0
+offset_bottom = 29.0
+value = 50.0
+texture_under = ExtResource("3_6tvxa")
+texture_progress = ExtResource("4_uux3p")
 
 [connection signal="input_event" from="Clickable_Area" to="." method="_on_clickable_area_input_event"]
 [connection signal="timeout" from="Reload_Timer" to="." method="_on_reload_timer_timeout"]
