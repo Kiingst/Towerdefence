@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjr1qrbeh7b3e"]
+[gd_scene load_steps=4 format=3 uid="uid://cjr1qrbeh7b3e"]
 
 [ext_resource type="PackedScene" uid="uid://bgsw0refy6cjd" path="res://Core/Levels/Test_Folder/test_level.tscn" id="1_kin0x"]
+[ext_resource type="Script" path="res://Core/Levels/base_level.gd" id="1_pgskp"]
+[ext_resource type="PackedScene" uid="uid://dqvmu6o3c2am6" path="res://Core/Game_Objects/Basic_Tower/basic_tower.tscn" id="2_gx3o0"]
 
 [node name="Base_Level" type="Node2D"]
+script = ExtResource("1_pgskp")
 
 [node name="Test_Level" parent="." instance=ExtResource("1_kin0x")]
+
+[node name="Basic_Tower" parent="." instance=ExtResource("2_gx3o0")]
+position = Vector2(736, 223)
+
+[node name="Basic_Tower2" parent="." instance=ExtResource("2_gx3o0")]
+position = Vector2(157, 222)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
