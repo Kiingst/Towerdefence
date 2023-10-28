@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjr1qrbeh7b3e"]
+[gd_scene load_steps=5 format=3 uid="uid://cjr1qrbeh7b3e"]
 
 [ext_resource type="PackedScene" uid="uid://bgsw0refy6cjd" path="res://Core/Levels/Test_Folder/test_level.tscn" id="1_kin0x"]
 [ext_resource type="Script" path="res://Core/Levels/base_level.gd" id="1_pgskp"]
 [ext_resource type="PackedScene" uid="uid://dqvmu6o3c2am6" path="res://Core/Game_Objects/Basic_Tower/basic_tower.tscn" id="2_gx3o0"]
+[ext_resource type="LabelSettings" uid="uid://c01nrsdg75oer" path="res://Core/UI/Label_Fonts/Label_Font.tres" id="4_74ht5"]
 
 [node name="Base_Level" type="Node2D"]
 script = ExtResource("1_pgskp")
@@ -10,7 +11,7 @@ script = ExtResource("1_pgskp")
 [node name="Test_Level" parent="." instance=ExtResource("1_kin0x")]
 
 [node name="Basic_Tower" parent="." instance=ExtResource("2_gx3o0")]
-position = Vector2(676, 225)
+position = Vector2(1506, 223)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -19,14 +20,52 @@ anchor_mode = 0
 
 [node name="Hud" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1152.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Tower_Builder" type="VBoxContainer" parent="UI/Hud"]
+[node name="ColorRect" type="ColorRect" parent="UI/Hud"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -24.0
+offset_top = -6.0
+offset_right = 768.0
+offset_bottom = 1092.0
+color = Color(0.537255, 0.537255, 0.537255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Hud"]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1076.0
+
+[node name="Top_Bar" type="HBoxContainer" parent="UI/Hud/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="UI/Hud/VBoxContainer/Top_Bar"]
+layout_mode = 2
+text = "Damage multiplayer: 1.00"
+label_settings = ExtResource("4_74ht5")
+
+[node name="Money_Count" type="Label" parent="UI/Hud/VBoxContainer/Top_Bar"]
+layout_mode = 2
+text = "Gold 0"
+label_settings = ExtResource("4_74ht5")
+horizontal_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/Hud/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hud/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Hud/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Tower_Builder" type="VBoxContainer" parent="UI/Hud/VBoxContainer"]
+layout_mode = 2

@@ -12,6 +12,7 @@ radius = 250.0
 size = Vector2(65, 63)
 
 [node name="Basic_Tower" type="Node2D"]
+z_index = 2
 script = ExtResource("1_itmin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
