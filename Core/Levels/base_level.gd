@@ -9,6 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var format_string = "Gold %s"
-	$UI/Hud/VBoxContainer/Money_Count.set_text(format_string % Money)  
+	$UI/Hud/VBoxContainer/Top_Bar/Money_Count.set_text(format_string % Money)  
 
 
