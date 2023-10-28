@@ -24,4 +24,3 @@ func _process(delta):
 func take_damage(damage):
 	health -= damage
 	$HealthBar.visible = true
-	print(health)
