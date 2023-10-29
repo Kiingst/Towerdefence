@@ -98,3 +98,5 @@ mouse_filter = 2
 
 [node name="Tower_Builder" type="VBoxContainer" parent="UI/Hud/VBoxContainer"]
 layout_mode = 2
+
+[connection signal="spawn_enemy" from="Test_Level" to="." method="_on_test_level_spawn_enemy"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_6dn16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7li"]
-size = Vector2(32, 32)
+size = Vector2(80, 80)
 
 [node name="Enemy" type="PathFollow2D"]
 script = ExtResource("1_1h8b6")
@@ -16,11 +16,11 @@ modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_toos6")
 
-[node name="enemy" type="Area2D" parent="."]
+[node name="Clickable_Area" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable_Area"]
 shape = SubResource("RectangleShape2D_ig7li")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
@@ -31,3 +31,5 @@ offset_right = 32.0
 offset_bottom = 23.0
 texture_under = ExtResource("3_6nvo2")
 texture_progress = ExtResource("4_6dn16")
+
+[connection signal="input_event" from="Clickable_Area" to="." method="_on_clickable_area_input_event"]
