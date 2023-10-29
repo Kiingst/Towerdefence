@@ -12,6 +12,7 @@ var max_ammo = 10
 var reload_timer = 1
 var tower_damage = 1
 var ammo_increment = 1
+var attack_range
 @export var projectile : PackedScene
 
 # Called when the node enters the scene tree for the first time.
