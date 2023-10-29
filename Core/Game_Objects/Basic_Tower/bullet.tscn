@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6b5i3eo66tym"]
+
+[ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="1_6jsdy"]
+[ext_resource type="Script" path="res://Core/Game_Objects/Basic_Tower/bullet.gd" id="1_fhtvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vecsp"]
+size = Vector2(32, 8)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fhtvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vecsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.6, 1, 1)
+scale = Vector2(0.5, 2.65)
+texture = ExtResource("1_6jsdy")
+
+[node name="life_time" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="life_time" to="." method="_on_life_time_timeout"]

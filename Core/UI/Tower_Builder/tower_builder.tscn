@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bghvwxxdnprfs"]
+
+[ext_resource type="Script" path="res://Core/UI/Tower_Builder/tower_builder.gd" id="1_f7rpg"]
+
+[node name="Tower_Builder" type="GridContainer"]
+size_flags_horizontal = 4
+columns = 4
+script = ExtResource("1_f7rpg")
+
+[node name="Button1" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower1"
+
+[node name="Button2" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower2"
+
+[node name="Button3" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower3"
+
+[node name="Button4" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower4"
+
+[node name="Button5" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower5"
+
+[node name="Button6" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower6"
+
+[node name="Button7" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower7"
+
+[node name="Button8" type="Button" parent="."]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+text = "Tower8"
+
+[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="Button8" to="." method="_on_button_8_pressed"]

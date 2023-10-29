@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm0q35efqdtvs"]
+
+[ext_resource type="Script" path="res://Core/Game_Objects/Auto_Clicker/auto_clicker.gd" id="1_21q26"]
+[ext_resource type="Texture2D" uid="uid://do1d6vp36yopu" path="res://Core/Game_Objects/Auto_Clicker/cursor.png" id="1_oylj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehnvg"]
+size = Vector2(28, 27)
+
+[node name="Auto_Clicker" type="Node2D"]
+z_index = 2
+script = ExtResource("1_21q26")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oylj5")
+
+[node name="Clicking_Area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clicking_Area"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_ehnvg")
+
+[node name="Click_Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="input_event" from="Clicking_Area" to="." method="_on_clicking_area_input_event"]
+[connection signal="timeout" from="Click_Timer" to="." method="_on_click_timer_timeout"]

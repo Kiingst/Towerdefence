@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-var move_speed = 0.05
+var move_speed = 0.02
 var health = 3
 var value = 1
 signal death
@@ -34,3 +34,5 @@ func clicked():
 func _on_clickable_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		clicked()
+
+

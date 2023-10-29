@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var selected = false
 var ammo = 0
 var can_shoot = true
 var enemys_in_range = false
@@ -15,6 +15,34 @@ var ammo_increment = 1
 var attack_range
 @export var projectile : PackedScene
 
+#special upgrades
+var doublefire = false
+var homimg_bullet = false
+
+#Upgrade data syntax
+# "Upgrade" = ["Upgrade_text", "Cost", "Code"]
+
+var current_upgrade_value = [1,1,1]
+var tower_name = "Basic Tower"
+
+var upgrade1_data  = {
+	"1" = ["did this work", "10" ,"player.move_speed += 100"],
+	"2" = ["res://icon.svg", "100" ,"player.move_speed += 100"],
+	"3" = ["res://icon.svg", "100000" ,"player.move_speed += 100"]
+
+}
+var upgrade2_data  = {
+	"1" = ["maybe ", "15" ,"player.move_speed += 100"],
+	"2" = ["res://icon.svg", "300" ,"player.move_speed += 100"],
+	"3" = ["res://icon.svg", "300000" ,"player.move_speed += 100"]
+
+}
+var upgrade3_data  = {
+	"1" = [" ion know", "13.5" ,"player.move_speed += 100"],
+	"2" = ["res://icon.svg", "500" ,"player.move_speed += 100"],
+	"3" = ["res://icon.svg", "1000000" ,"player.move_speed += 100"]
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update()
@@ -28,6 +56,11 @@ func _process(delta):
 	if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo > 0 :
 		attack_enemy()
 	$Ammo_bar.value = ammo
+	
+	if Input.is_action_just_released("Left_Click"):
+		selected = false
+		remove_from_group("selected")
+	
 
 func attack_enemy():
 	var x = $Attack_Range.get_overlapping_areas()
@@ -35,38 +68,45 @@ func attack_enemy():
 	if y.get_parent().has_method('take_damage'):  
 			$Reload_Timer.start()
 			can_shoot = false
-			#shoot_at_enemy(y)
-			print("shooting at " ,y)
-			y.get_parent().take_damage(tower_damage) 
+			shoot_at_enemy(y)
+			#print("shooting at " ,y)
+			#y.get_parent().take_damage(tower_damage) 
 			ammo -= 1
 
 func shoot_at_enemy(enemy):
-	#var vec_to_enemy = enemy.global_position - global_position
-	#vec_to_enemy = vec_to_enemy.normalized()
-	#$test_sword.global_rotation = atan2(vec_to_enemy.y, vec_to_enemy.x)
-	#var direction = Vector2(1,0).rotated($test_sword.global_rotation)
-	#emit_signal('fire', projectile , $test_sword/fire.global_position, direction)
+	var vec_to_enemy = enemy.global_position - global_position
+	vec_to_enemy = vec_to_enemy.normalized()
+	$Barell.global_rotation = atan2(vec_to_enemy.y, vec_to_enemy.x)
+	var direction = Vector2(1,0).rotated($Barell.global_rotation)
+	#fire(projectile , $Barell/Marker2D.global_position, direction)
+	emit_signal('fire', projectile , $Barell/Marker2D.global_position, direction, tower_damage)
 	#print("shooting at " ,enemy)
 	#ammo -= 1
 	pass
 
-func click():
+func clicked():
 	if max_ammo > ammo:
 		ammo += ammo_increment
-		print("Tower at ", position, " now has ", ammo, " bullets")
+		#print("Tower at ", position, " now has ", ammo, " bullets")
 	else:
-		print("Tower at ", position, " ammo at max ")
+		#print("Tower at ", position, " ammo at max ")
+		pass
 
 func _on_reload_timer_timeout():
 	can_shoot = true
 	
 
 
+	
 
 func _on_clickable_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		click()
-		
+		clicked()
+	
+	if Input.is_action_pressed("Left_Click"):
+		if get_tree().get_nodes_in_group("Base_Level")[0].build_mode == false:
+			selected = true
+			add_to_group("selected")
 
 func update():
 	$Ammo_bar.max_value = max_ammo

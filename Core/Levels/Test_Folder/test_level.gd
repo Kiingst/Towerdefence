@@ -1,6 +1,7 @@
 extends Node2D
 @export var enemy : PackedScene
 signal spawn_enemy
+signal life_loss
 
 
 #waves
@@ -16,3 +17,10 @@ func _process(delta):
 
 func _on_spawn_timer_timeout():
 	emit_signal("spawn_enemy", enemy)
+
+
+func _on_end_area_entered(area):
+	if area.get_parent().is_in_group("Enemys"):
+		print("enemy entered final area")
+		emit_signal("life_loss", area.get_parent().health)
+		area.get_parent().queue_free()
