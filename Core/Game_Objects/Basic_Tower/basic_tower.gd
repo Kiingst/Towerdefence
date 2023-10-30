@@ -4,6 +4,11 @@ var selected = false
 var ammo = 0
 var can_shoot = true
 var enemys_in_range = false
+var icon = "res://icon.svg"
+
+#variables
+var price = 10 
+var disabled = false
 
 signal fire
 
@@ -52,14 +57,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print($Attack_Range.get_overlapping_areas())
-	if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo > 0 :
-		attack_enemy()
-	$Ammo_bar.value = ammo
-	
-	if Input.is_action_just_released("Left_Click"):
-		selected = false
-		remove_from_group("selected")
+	if not disabled:
+		#print($Attack_Range.get_overlapping_areas())
+		if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo > 0 :
+			attack_enemy()
+		$Ammo_bar.value = ammo
+		
+		if Input.is_action_just_released("Left_Click"):
+			selected = false
+			remove_from_group("selected")
 	
 
 func attack_enemy():

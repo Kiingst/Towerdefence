@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bghvwxxdnprfs"]
+[gd_scene load_steps=3 format=3 uid="uid://bghvwxxdnprfs"]
 
 [ext_resource type="Script" path="res://Core/UI/Tower_Builder/tower_builder.gd" id="1_f7rpg"]
+[ext_resource type="PackedScene" uid="uid://dqvmu6o3c2am6" path="res://Core/Game_Objects/Basic_Tower/basic_tower.tscn" id="2_uqf02"]
 
 [node name="Tower_Builder" type="GridContainer"]
 size_flags_horizontal = 4
 columns = 4
 script = ExtResource("1_f7rpg")
+tower1 = ExtResource("2_uqf02")
 
 [node name="Button1" type="Button" parent="."]
 custom_minimum_size = Vector2(185, 75)
