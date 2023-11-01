@@ -35,16 +35,19 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 text = "Upgrade 1"
+text_overrun_behavior = 3
 
 [node name="Upgrade2" type="Button" parent="VBoxContainer/Upgrade_Buttons"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Upgrade 2"
+text_overrun_behavior = 3
 
 [node name="Upgrade3" type="Button" parent="VBoxContainer/Upgrade_Buttons"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Upgrade 3"
+text_overrun_behavior = 3
 
 [node name="Botton_Margin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)

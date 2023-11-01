@@ -25,9 +25,25 @@ func _process(delta):
 		build_mode_turret.global_position = lerp(build_mode_turret.global_position, get_global_mouse_position(), 50 * delta)
 		
 		if Input.is_action_pressed("Left_Click"):
-			build_mode_turret.global_position = get_global_mouse_position()
-			placed = true
-			build_mode = false
+			var good_placement = false
+			var snap = snapped(get_global_mouse_position(), Vector2(32,32))
+			
+			var x = fmod((snap.x / 32), 2) == 1
+			var y = fmod((snap.x / 32), 2) == 1
+			if x and y:
+				good_placement = true
+			
+			if good_placement == true:
+				money -= build_mode_turret.price
+				build_mode_turret.global_position = snapped(get_global_mouse_position(), Vector2(32,32))
+				build_mode_turret.disabled = false
+				placed = true
+				build_mode = false
+			else:
+				build_mode_turret.queue_free()
+				build_mode = false
+				print("didnt place")
+	
 	
 
 
@@ -58,7 +74,6 @@ func _on_test_level_life_loss(loss):
 func _on_tower_builder_tower_builder_button_pressed(price, tower):
 	print(price)
 	if price <= money:
-		money -= price
 		start_build_mode(tower)
 	else:
 		print("You donthave enough money")
@@ -67,7 +82,7 @@ func _on_tower_builder_tower_builder_button_pressed(price, tower):
 
 func start_build_mode(packed_scene):
 	build_mode_turret = packed_scene.instantiate()
-	build_mode_turret.disabled = false
+	build_mode_turret.disabled = true
 	build_mode = true
 	add_child(build_mode_turret)
 	build_mode_turret.connect("fire",Callable(self,"_on_basic_tower_fire"))
@@ -84,7 +99,7 @@ func _on_upgrade_node_button_pressed(node, upgrade):
 	print("price is ", price)
 	if price <= money:
 		money -= price
-		node.current_upgrade_value += 1
+		node.current_upgrade_value_add()
 		#print("bought item")
 		apply_upgrade(node, inner_upgrade_array[2])
 

@@ -15,12 +15,19 @@ func _process(delta):
 
 func display_upgrades(node):
 	current_node = node
-	var temp_string = "%s"
+	var temp_string = "%s cost %s"
+	#var format_string = "{upg} cost {cost}"
 	var temp_name = "Upgrades for %s"
 	$VBoxContainer/Top_Margin/Upgrade_Label.set_text(temp_name % node.tower_name)
-	$VBoxContainer/Upgrade_Buttons/Upgrade1.set_text(node.upgrade1_data.get(temp_string % node.current_upgrade_value)[0])
-	$VBoxContainer/Upgrade_Buttons/Upgrade2.set_text(node.upgrade2_data.get(temp_string % node.current_upgrade_value)[0])
-	$VBoxContainer/Upgrade_Buttons/Upgrade3.set_text(node.upgrade3_data.get(temp_string % node.current_upgrade_value)[0])
+	var upgrade = node.upgrade1_data.get(str(node.current_upgrade_value))
+	var temp_string_formated = temp_string % [upgrade[0], upgrade[1]]
+	$VBoxContainer/Upgrade_Buttons/Upgrade1.set_text(temp_string_formated)
+	upgrade = node.upgrade2_data.get(str(node.current_upgrade_value))
+	temp_string_formated = temp_string % [upgrade[0], upgrade[1]]
+	$VBoxContainer/Upgrade_Buttons/Upgrade2.set_text(temp_string_formated)
+	upgrade = node.upgrade3_data.get(str(node.current_upgrade_value))
+	temp_string_formated = temp_string % [upgrade[0], upgrade[1]]
+	$VBoxContainer/Upgrade_Buttons/Upgrade3.set_text(temp_string_formated)
 
 # emiting signal for func in base_level gd order should be (func_name, node, whichupgrade)
 func _on_upgrade_1_pressed():

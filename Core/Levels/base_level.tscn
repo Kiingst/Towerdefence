@@ -116,6 +116,9 @@ layout_mode = 2
 [node name="Tower_Builder" parent="UI/Hud/VBoxContainer" instance=ExtResource("7_s7qvj")]
 layout_mode = 2
 
+[node name="Step" type="Marker2D" parent="."]
+position = Vector2(32, 32)
+
 [connection signal="life_loss" from="Test_Level" to="." method="_on_test_level_life_loss"]
 [connection signal="spawn_enemy" from="Test_Level" to="." method="_on_test_level_spawn_enemy"]
 [connection signal="fire" from="Basic_Tower" to="." method="_on_basic_tower_fire"]
