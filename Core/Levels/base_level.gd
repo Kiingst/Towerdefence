@@ -1,5 +1,5 @@
 extends Node2D
-var money = 100
+var money = 10000000
 var click_damage = 1
 var health = 100
 var Currently_accepted
@@ -72,3 +72,21 @@ func start_build_mode(packed_scene):
 	add_child(build_mode_turret)
 	build_mode_turret.connect("fire",Callable(self,"_on_basic_tower_fire"))
 	
+
+
+func _on_upgrade_node_button_pressed(node, upgrade):
+	#check if enough moeny for upgrade
+	var upgrade_array = node.upgrade_array
+	var upgrade_dict = upgrade_array[upgrade - 1]
+	var inner_upgrade_array = upgrade_dict.get(str(node.current_upgrade_value))
+	var price = int(inner_upgrade_array[1])
+	
+	print("price is ", price)
+	if price <= money:
+		money -= price
+		node.current_upgrade_value += 1
+		#print("bought item")
+		apply_upgrade(node, inner_upgrade_array[2])
+
+func apply_upgrade(node, upgrade):
+	print("applying ", upgrade, " on ", node)

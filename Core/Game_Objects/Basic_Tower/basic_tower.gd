@@ -17,37 +17,42 @@ var max_ammo = 10
 var reload_timer = 1
 var tower_damage = 1
 var ammo_increment = 1
+var money_per_kill = 1
 var attack_range
 @export var projectile : PackedScene
 
 #special upgrades
-var doublefire = false
+var double_fire = false
 var homimg_bullet = false
+var penetrating_bullets = false
+var inf_ammo = false
+var quad_fire = false
 
 #Upgrade data syntax
 # "Upgrade" = ["Upgrade_text", "Cost", "Code"]
 
-var current_upgrade_value = [1,1,1]
+var current_upgrade_value = 1
 var tower_name = "Basic Tower"
 
 var upgrade1_data  = {
-	"1" = ["did this work", "10" ,"player.move_speed += 100"],
-	"2" = ["res://icon.svg", "100" ,"player.move_speed += 100"],
-	"3" = ["res://icon.svg", "100000" ,"player.move_speed += 100"]
+	"1" = ["Double Shot", "10" ,"player.double_fire = true"],
+	"2" = ["Extented Range", "100" ,"player/Attack_Range/CollisionShape2D.radius += 50"],
+	"3" = ["Rapid Fire", "100000" ,"player.reload_timer = 0.1"]
 
 }
 var upgrade2_data  = {
-	"1" = ["maybe ", "15" ,"player.move_speed += 100"],
-	"2" = ["res://icon.svg", "300" ,"player.move_speed += 100"],
-	"3" = ["res://icon.svg", "300000" ,"player.move_speed += 100"]
+	"1" = ["Penetrating Bullets ", "15" ,"player.penetrating_bullets = true"],
+	"2" = ["Infinite ammo", "300" ,"player.inf_ammo = true"],
+	"3" = [" Quad Fire ", "300000" ,"player.quad_fire = true"]
 
 }
 var upgrade3_data  = {
-	"1" = [" ion know", "13.5" ,"player.move_speed += 100"],
-	"2" = ["res://icon.svg", "500" ,"player.move_speed += 100"],
-	"3" = ["res://icon.svg", "1000000" ,"player.move_speed += 100"]
+	"1" = ["1 Extra Money Per kill ", "13.5" ,"player.money_per_kill += 1"],
+	"2" = ["homimg bullets", "500" ,"player.homing_bullet = true"],
+	"3" = ["100 Extra Money Per Kill", "1000000" ,"player.money_per_kill += 100"]
 }
 
+var upgrade_array = [upgrade1_data, upgrade2_data, upgrade3_data]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update()
@@ -65,7 +70,6 @@ func _process(delta):
 		
 		if Input.is_action_just_released("Left_Click"):
 			selected = false
-			remove_from_group("selected")
 	
 
 func attack_enemy():
@@ -112,6 +116,7 @@ func _on_clickable_area_input_event(viewport, event, shape_idx):
 	if Input.is_action_pressed("Left_Click"):
 		if get_tree().get_nodes_in_group("Base_Level")[0].build_mode == false:
 			selected = true
+			get_tree().call_group("selected", "remove_from_selected")
 			add_to_group("selected")
 
 func update():
@@ -119,3 +124,6 @@ func update():
 	$Ammo_bar.step = ammo_increment
 	$Reload_Timer.wait_time = reload_timer
 	
+
+func remove_from_selected():
+	remove_from_group("selected")
