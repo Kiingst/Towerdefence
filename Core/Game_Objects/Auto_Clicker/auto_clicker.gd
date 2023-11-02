@@ -81,6 +81,7 @@ func _on_clicking_area_input_event(viewport, event, shape_idx):
 			get_tree().call_group("selected", "remove_from_selected")
 			add_to_group("selected")
 
+
 func remove_from_selected():
 	remove_from_group("selected")
 

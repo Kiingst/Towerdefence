@@ -140,3 +140,6 @@ func remove_from_selected():
 func current_upgrade_value_add():
 	if current_upgrade_value <= 3:
 		current_upgrade_value += 1
+		
+
+

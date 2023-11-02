@@ -22,9 +22,9 @@ func _ready():
 func _process(delta):
 	
 	var format_string_money = "Gold %s"
-	$UI/Hud/VBoxContainer/Top_Bar/Money_Count.set_text(format_string_money % money) 
+	$Hud/VBoxContainer/Top_Bar/Money_Count.set_text(format_string_money % money) 
 	var format_string_health = "Health %s"  
-	$UI/Hud/VBoxContainer/Top_Bar/Health_Count.set_text(format_string_health % health)
+	$Hud/VBoxContainer/Top_Bar/Health_Count.set_text(format_string_health % health)
 	
 	if build_mode:
 		var placed = false

@@ -22,19 +22,16 @@ anchor_mode = 0
 [node name="Auto_Clicker" parent="." instance=ExtResource("5_r84h8")]
 position = Vector2(1310, 160)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Hud" type="Control" parent="UI"]
+[node name="Hud" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/Hud"]
+[node name="ColorRect" type="ColorRect" parent="Hud"]
 layout_mode = 0
 offset_left = -24.0
 offset_top = -6.0
@@ -42,79 +39,82 @@ offset_right = 768.0
 offset_bottom = 1092.0
 color = Color(0.537255, 0.537255, 0.537255, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Hud"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
 offset_right = 768.0
 offset_bottom = 1076.0
 
-[node name="Top_Bar" type="HBoxContainer" parent="UI/Hud/VBoxContainer"]
+[node name="Top_Bar" type="HBoxContainer" parent="Hud/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Health_Count" type="Label" parent="UI/Hud/VBoxContainer/Top_Bar"]
+[node name="Health_Count" type="Label" parent="Hud/VBoxContainer/Top_Bar"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Health 100"
 label_settings = ExtResource("4_74ht5")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Hud/VBoxContainer/Top_Bar"]
+[node name="MarginContainer" type="MarginContainer" parent="Hud/VBoxContainer/Top_Bar"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 
-[node name="Money_Count" type="Label" parent="UI/Hud/VBoxContainer/Top_Bar"]
+[node name="Money_Count" type="Label" parent="Hud/VBoxContainer/Top_Bar"]
 layout_mode = 2
 text = "Gold 0"
 label_settings = ExtResource("4_74ht5")
 horizontal_alignment = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="UI/Hud/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Hud/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 100)
 layout_mode = 2
 
-[node name="Buttons" type="GridContainer" parent="UI/Hud/VBoxContainer"]
+[node name="Buttons" type="GridContainer" parent="Hud/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 
-[node name="Button" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button" type="Button" parent="Hud/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 text = "Tower Upgrades"
 
-[node name="Button2" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button2" type="Button" parent="Hud/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Enemy Upgrades"
 
-[node name="Button3" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button3" type="Button" parent="Hud/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Tower Managers \\ opererators"
 
-[node name="Button4" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button4" type="Button" parent="Hud/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Progression"
 
-[node name="Button5" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button5" type="Button" parent="Hud/VBoxContainer/Buttons"]
 layout_mode = 2
 text = "Unlocks"
 
-[node name="Button6" type="Button" parent="UI/Hud/VBoxContainer/Buttons"]
+[node name="Button6" type="Button" parent="Hud/VBoxContainer/Buttons"]
 layout_mode = 2
 text = "Rebirth Shop
 "
 
-[node name="Upgrade_area" type="MarginContainer" parent="UI/Hud/VBoxContainer"]
+[node name="Upgrade_area" type="MarginContainer" parent="Hud/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Upgrade_node" parent="UI/Hud/VBoxContainer/Upgrade_area" instance=ExtResource("6_b5utr")]
+[node name="Upgrade_node" parent="Hud/VBoxContainer/Upgrade_area" instance=ExtResource("6_b5utr")]
 layout_mode = 2
 
-[node name="Tower_Builder" parent="UI/Hud/VBoxContainer" instance=ExtResource("7_s7qvj")]
+[node name="Tower_Builder" parent="Hud/VBoxContainer" instance=ExtResource("7_s7qvj")]
 layout_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Step" type="Marker2D" parent="."]
 position = Vector2(32, 32)
@@ -130,5 +130,5 @@ color = Color(0.447059, 0.447059, 0.447059, 0.364706)
 [connection signal="life_loss" from="Test_Level" to="." method="_on_test_level_life_loss"]
 [connection signal="spawn_enemy" from="Test_Level" to="." method="_on_test_level_spawn_enemy"]
 [connection signal="fire" from="Basic_Tower" to="." method="_on_basic_tower_fire"]
-[connection signal="button_pressed" from="UI/Hud/VBoxContainer/Upgrade_area/Upgrade_node" to="." method="_on_upgrade_node_button_pressed"]
-[connection signal="tower_builder_button_pressed" from="UI/Hud/VBoxContainer/Tower_Builder" to="." method="_on_tower_builder_tower_builder_button_pressed"]
+[connection signal="button_pressed" from="Hud/VBoxContainer/Upgrade_area/Upgrade_node" to="." method="_on_upgrade_node_button_pressed"]
+[connection signal="tower_builder_button_pressed" from="Hud/VBoxContainer/Tower_Builder" to="." method="_on_tower_builder_tower_builder_button_pressed"]

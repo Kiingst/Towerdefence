@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://yguekgav41qn"]
+
+[ext_resource type="PackedScene" uid="uid://dm0q35efqdtvs" path="res://Core/Game_Objects/Auto_Clicker/auto_clicker.tscn" id="1_ftxxj"]
+[ext_resource type="Script" path="res://Core/Game_Objects/Auto_Clicker/auto_clicker_test.gd" id="2_hhi2l"]
+
+[node name="Auto_Clicker" instance=ExtResource("1_ftxxj")]
+script = ExtResource("2_hhi2l")
