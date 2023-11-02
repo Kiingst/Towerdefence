@@ -70,9 +70,13 @@ func _process(delta):
 			attack_enemy()
 		$Ammo_bar.value = ammo
 		
-		if Input.is_action_just_released("Left_Click"):
+		if Input.is_action_just_released("Right_Click"):
 			selected = false
 	
+	if selected == true:
+		$Attack_Range.visible = true
+	else:
+		$Attack_Range.visible = false
 
 func attack_enemy():
 	var x = $Attack_Range.get_overlapping_areas()
@@ -115,11 +119,13 @@ func _on_clickable_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		clicked()
 	
-	if Input.is_action_pressed("Left_Click"):
+	if Input.is_action_pressed("Right_Click"):
 		if get_tree().get_nodes_in_group("Base_Level")[0].build_mode == false:
 			selected = true
 			get_tree().call_group("selected", "remove_from_selected")
 			add_to_group("selected")
+			
+	
 
 func update():
 	$Ammo_bar.max_value = max_ammo

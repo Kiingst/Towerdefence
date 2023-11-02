@@ -22,16 +22,21 @@ func _process(delta):
 	
 	if build_mode:
 		var placed = false
+		var good_placement = false
 		build_mode_turret.global_position = lerp(build_mode_turret.global_position, get_global_mouse_position(), 50 * delta)
 		
+		var snap = snapped(get_global_mouse_position(), Vector2(32,32))
+		var x = fmod((snap.x / 32), 2) == 1
+		var y = fmod((snap.x / 32), 2) == 1
+		
+		if x and y:
+			good_placement = true
+			build_mode_turret.modulate = Color(0 ,1, 0)
+		else:
+			build_mode_turret.modulate = Color(1 ,0, 0)
+		
+		
 		if Input.is_action_pressed("Left_Click"):
-			var good_placement = false
-			var snap = snapped(get_global_mouse_position(), Vector2(32,32))
-			
-			var x = fmod((snap.x / 32), 2) == 1
-			var y = fmod((snap.x / 32), 2) == 1
-			if x and y:
-				good_placement = true
 			
 			if good_placement == true:
 				money -= build_mode_turret.price
@@ -39,6 +44,7 @@ func _process(delta):
 				build_mode_turret.disabled = false
 				placed = true
 				build_mode = false
+				build_mode_turret.modulate = Color(1 ,1, 1)
 			else:
 				build_mode_turret.queue_free()
 				build_mode = false
@@ -72,7 +78,6 @@ func _on_test_level_life_loss(loss):
 
 
 func _on_tower_builder_tower_builder_button_pressed(price, tower):
-	print(price)
 	if price <= money:
 		start_build_mode(tower)
 	else:

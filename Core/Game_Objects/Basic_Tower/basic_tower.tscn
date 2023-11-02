@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqvmu6o3c2am6"]
+[gd_scene load_steps=10 format=3 uid="uid://dqvmu6o3c2am6"]
 
 [ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="1_go6sk"]
 [ext_resource type="Script" path="res://Core/Game_Objects/Basic_Tower/basic_tower.gd" id="1_itmin"]
 [ext_resource type="PackedScene" uid="uid://b6b5i3eo66tym" path="res://Core/Game_Objects/Basic_Tower/bullet.tscn" id="2_vewnx"]
 [ext_resource type="Texture2D" uid="uid://vahpgx1ahy5g" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar0.png" id="3_6tvxa"]
+[ext_resource type="Texture2D" uid="uid://b5sshaia3rnpo" path="res://Core/Game_Objects/Basic_Tower/shooting_area_outer.png" id="4_ps2yh"]
 [ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_uux3p"]
+[ext_resource type="Texture2D" uid="uid://b7k8ojecm1cpy" path="res://Core/Game_Objects/Basic_Tower/shooting_area_inner.png" id="5_hfulw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wadu"]
 radius = 250.0
@@ -26,6 +28,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Range"]
 shape = SubResource("CircleShape2D_3wadu")
+
+[node name="Visible_Attack_Range" type="Node2D" parent="Attack_Range"]
+
+[node name="Outter" type="Sprite2D" parent="Attack_Range/Visible_Attack_Range"]
+texture = ExtResource("4_ps2yh")
+
+[node name="Inner" type="Sprite2D" parent="Attack_Range/Visible_Attack_Range"]
+modulate = Color(1, 1, 1, 0.380392)
+texture = ExtResource("5_hfulw")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
