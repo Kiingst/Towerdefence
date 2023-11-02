@@ -119,6 +119,7 @@ func _on_clickable_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		clicked()
 	
+	#on right click made current turret selected
 	if Input.is_action_pressed("Right_Click"):
 		if get_tree().get_nodes_in_group("Base_Level")[0].build_mode == false:
 			selected = true
