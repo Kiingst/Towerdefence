@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgsw0refy6cjd"]
+[gd_scene load_steps=7 format=3 uid="uid://bgsw0refy6cjd"]
 
 [ext_resource type="PackedScene" uid="uid://oighgucc4rm4" path="res://Core/Levels/Test_Folder/test_tile_map.tscn" id="1_dpu8i"]
 [ext_resource type="Script" path="res://Core/Levels/Test_Folder/test_level.gd" id="1_go2qw"]
@@ -12,6 +12,9 @@ point_count = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bfgh"]
 size = Vector2(189, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8i7l"]
+size = Vector2(792, 1112)
 
 [node name="Test_Level" type="Node2D"]
 script = ExtResource("1_go2qw")
@@ -41,6 +44,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 position = Vector2(80, 144)
 shape = SubResource("RectangleShape2D_1bfgh")
+
+[node name="Upgrades_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrades_Area"]
+position = Vector2(372, 548)
+shape = SubResource("RectangleShape2D_r8i7l")
 
 [connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="area_entered" from="End" to="." method="_on_end_area_entered"]
