@@ -1,0 +1,647 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkmebkdpqusx8"]
+
+[ext_resource type="Script" path="res://Core/Levels/Hud.gd" id="1_y644v"]
+[ext_resource type="LabelSettings" uid="uid://c01nrsdg75oer" path="res://Core/UI/Label_Fonts/Label_Font.tres" id="2_or5do"]
+[ext_resource type="PackedScene" uid="uid://du8bsn7wk74ao" path="res://Core/UI/Upgrade/upgrade_node.tscn" id="3_a6ykb"]
+[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="3_pksu2"]
+[ext_resource type="PackedScene" uid="uid://bghvwxxdnprfs" path="res://Core/UI/Tower_Builder/tower_builder.tscn" id="4_173a8"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y644v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -6.0
+offset_right = 768.0
+offset_bottom = 1092.0
+color = Color(0.537255, 0.537255, 0.537255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1076.0
+
+[node name="Top_Bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Health_Count" type="Label" parent="VBoxContainer/Top_Bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Health 100"
+label_settings = ExtResource("2_or5do")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Top_Bar"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="Money_Count" type="Label" parent="VBoxContainer/Top_Bar"]
+layout_mode = 2
+text = "Gold 0"
+label_settings = ExtResource("2_or5do")
+horizontal_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+
+[node name="Buttons" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Tower_Upgrades" type="Button" parent="VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "Tower Upgrades"
+
+[node name="Enemy_Upgrades" type="Button" parent="VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Enemy Upgrades"
+
+[node name="Tower_Mangers" type="Button" parent="VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Tower Managers \\ opererators"
+
+[node name="Progression" type="Button" parent="VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Progression"
+
+[node name="Clicker_upgrades" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "Clicker Upgrades
+"
+
+[node name="Rebirth_Shop" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "Rebirth Shop
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+
+[node name="Perment_Upgrades" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 300)
+layout_mode = 2
+
+[node name="Tower_Upgrades" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+alignment = 1
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Enemy_Upgrades" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Enemy_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Clicker_Upgrades" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Clicker_Upgrades/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Tower_managers" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Tower_managers/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Rebirth_Shop" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Rebirth_Shop/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Progression" type="Control" parent="VBoxContainer/Perment_Upgrades"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Upgrade_1" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_1"]
+layout_mode = 2
+
+[node name="Upgrade_4" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_4"]
+layout_mode = 2
+
+[node name="Upgrade_5" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_5"]
+layout_mode = 2
+
+[node name="Upgrade_6" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_6"]
+layout_mode = 2
+
+[node name="Upgrade_2" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_2"]
+layout_mode = 2
+
+[node name="Upgrade_3" type="MarginContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Perment_Upgrades/Progression/VBoxContainer/GridContainer/Upgrade_3"]
+layout_mode = 2
+
+[node name="Upgrade_area" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 400)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Upgrade_node" parent="VBoxContainer/Upgrade_area" instance=ExtResource("3_a6ykb")]
+layout_mode = 2
+
+[node name="Bottom_margin" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+
+[node name="Tower_Builder" parent="VBoxContainer" instance=ExtResource("4_173a8")]
+layout_mode = 2

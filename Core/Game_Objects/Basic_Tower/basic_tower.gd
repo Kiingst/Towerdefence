@@ -60,6 +60,7 @@ func _ready():
 	update()
 	
 	add_to_group("Towers")
+	add_to_group("Tower1")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
