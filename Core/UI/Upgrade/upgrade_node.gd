@@ -1,6 +1,7 @@
 extends Control
 signal button_pressed
 var current_node 
+signal show_upgrades
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +15,7 @@ func _process(delta):
 		
 
 func display_upgrades(node):
+	emit_signal("show_upgrades")
 	current_node = node
 	var temp_string = "%s cost %s"
 	#var format_string = "{upg} cost {cost}"
@@ -44,7 +46,5 @@ func _on_upgrade_3_pressed():
 	emit_signal("button_pressed", current_node, 3)
 	#current_node.current_upgrade_value +=1
 	
-func button_pressed1(button):
-	emit_signal("button_pressed", button)
-	#current_node.current_upgrade_value +=1
+
 	
