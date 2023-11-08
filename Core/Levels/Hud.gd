@@ -15,8 +15,8 @@ func normal_tab():
 	$VBoxContainer/Top_Bar.visible = true
 	$VBoxContainer/Top_Buttons.visible = true
 	$VBoxContainer/Tower_Builder.visible = true
-	$VBoxContainer/Middle_magrin/Perment_Upgrades.visible = false
-	$VBoxContainer/Middle_magrin/Upgrade_area.visible = false
+	
+	#disable_middle_area()
 
 
 func _on_tower_builder_tower_builder_button_pressed(price , tower):
@@ -31,14 +31,20 @@ func _on_upgrade_node_button_pressed(node , number):
 
 func _on_upgrade_node_show_upgrades():
 	normal_tab()
-	$VBoxContainer/Middle_magrin/Upgrade_area.visible = true
+	$VBoxContainer/Middle_area/Upgrade_node.visible = true
 
 
 func _on_tower_upgrades_pressed():
 	print("pressing button")
 	normal_tab()
-	$VBoxContainer/Middle_magrin/Perment_Upgrades.visible = true
-	$VBoxContainer/Middle_magrin/Perment_Upgrades/Place_Holder.visible = true
+	$VBoxContainer/Middle_area/Tower_Upgrades.visible = true
+	
+
+
+func disable_middle_area():
+	var x = $VBoxContainer/Middle_area.get_children()
+	for i in x.size():
+		x[i].visible = false
 
 
 func _on_enemy_upgrades_pressed():
