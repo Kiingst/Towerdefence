@@ -13,7 +13,11 @@ func _ready():
 func _process(delta):
 	if get_tree().get_nodes_in_group("selected").size() > 0:
 		display_upgrades(get_tree().get_nodes_in_group("selected")[0])
-		
+	else:
+		saved = null
+	
+	print(get_tree().get_nodes_in_group("selected").size())
+	
 
 func display_upgrades(node):
 	if is_old_node(node):

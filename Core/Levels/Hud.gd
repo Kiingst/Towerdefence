@@ -1,6 +1,7 @@
 extends Control
 signal tower_builder_button_pressed
 signal upgrade_button_pressed
+var tower_selected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 
 func normal_tab():
 	$VBoxContainer/Top_Bar.visible = true
@@ -37,7 +39,14 @@ func _on_upgrade_node_show_upgrades():
 
 func _on_tower_upgrades_pressed():
 	print("pressing button")
+	var x = get_tree().get_nodes_in_group("selected")
 	normal_tab()
+	
+	if x.size() > 0:
+		for i in x.size():
+			x[i].remove_from_selected()
+	
+	
 	print("upgrade area visiblity is ", $VBoxContainer/Middle_area/Upgrade_node.visible)
 	$VBoxContainer/Middle_area/Tower_Upgrades.visible = true
 	
