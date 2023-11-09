@@ -1,0 +1,180 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkmebkdpqusx8"]
+
+[ext_resource type="Script" path="res://Core/Levels/Hud.gd" id="1_y644v"]
+[ext_resource type="LabelSettings" uid="uid://c01nrsdg75oer" path="res://Core/UI/Label_Fonts/Label_Font.tres" id="2_or5do"]
+[ext_resource type="PackedScene" uid="uid://du8bsn7wk74ao" path="res://Core/UI/Upgrade/upgrade_node.tscn" id="3_a6ykb"]
+[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="3_pksu2"]
+[ext_resource type="PackedScene" uid="uid://bghvwxxdnprfs" path="res://Core/UI/Tower_Builder/tower_builder.tscn" id="4_173a8"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y644v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -6.0
+offset_right = 768.0
+offset_bottom = 1092.0
+color = Color(0.537255, 0.537255, 0.537255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 1076.0
+
+[node name="Top_Bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Health_Count" type="Label" parent="VBoxContainer/Top_Bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Health 100"
+label_settings = ExtResource("2_or5do")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Top_Bar"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="Money_Count" type="Label" parent="VBoxContainer/Top_Bar"]
+layout_mode = 2
+text = "Gold 0"
+label_settings = ExtResource("2_or5do")
+horizontal_alignment = 2
+
+[node name="Top Margin" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 2
+
+[node name="Top_Buttons" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+
+[node name="Top_Buttons" type="GridContainer" parent="VBoxContainer/Top_Buttons"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 763.0
+offset_bottom = 208.0
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Tower_Upgrades" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+text = "Tower Upgrades"
+
+[node name="Enemy_Upgrades" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Enemy Upgrades"
+
+[node name="Tower_Mangers" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Tower Managers \\ opererators"
+
+[node name="Progression" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Progression"
+
+[node name="Clicker_upgrades" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+layout_mode = 2
+text = "Clicker Upgrades
+"
+
+[node name="Rebirth_Shop" type="Button" parent="VBoxContainer/Top_Buttons/Top_Buttons"]
+layout_mode = 2
+text = "Rebirth Shop
+"
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+
+[node name="Middle_area" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 400)
+layout_mode = 2
+
+[node name="Upgrade_node" parent="VBoxContainer/Middle_area" instance=ExtResource("3_a6ykb")]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 768.0
+offset_bottom = 404.0
+
+[node name="Tower_Upgrades" type="Control" parent="VBoxContainer/Middle_area"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 768.0
+offset_bottom = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Middle_area/Tower_Upgrades"]
+layout_mode = 2
+offset_right = 768.0
+offset_bottom = 311.0
+alignment = 1
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Button2" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Button3" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Button4" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Button5" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Button6" type="Button" parent="VBoxContainer/Middle_area/Tower_Upgrades/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "More Damage"
+icon = ExtResource("3_pksu2")
+
+[node name="Bottom_margin" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+
+[node name="Tower_Builder" parent="VBoxContainer" instance=ExtResource("4_173a8")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Tower_Upgrades" to="." method="_on_tower_upgrades_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Enemy_Upgrades" to="." method="_on_enemy_upgrades_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Tower_Mangers" to="." method="_on_tower_mangers_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Progression" to="." method="_on_progression_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Clicker_upgrades" to="." method="_on_clicker_upgrades_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Rebirth_Shop" to="." method="_on_rebirth_shop_pressed"]
+[connection signal="button_pressed" from="VBoxContainer/Middle_area/Upgrade_node" to="." method="_on_upgrade_node_button_pressed"]
+[connection signal="show_upgrades" from="VBoxContainer/Middle_area/Upgrade_node" to="." method="_on_upgrade_node_show_upgrades"]
+[connection signal="tower_builder_button_pressed" from="VBoxContainer/Tower_Builder" to="." method="_on_tower_builder_tower_builder_button_pressed"]
