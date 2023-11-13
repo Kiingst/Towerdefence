@@ -43,9 +43,10 @@ func display_upgrades(tower_upgrades):
 		var upgrade = tower_upgrades.get(str(i))
 		print(upgrade)
 		var x = upgrade_template.instantiate()
-		var labels = x.get_children()[0].get_children()[0].get_children()[1].get_children()
-		labels[0].text = upgrade[0] + " 0"
-		labels[2].text = "10"
+		var labels = x.get_child(0).get_child(0).get_child(0).get_children()
+		print(labels)
+		labels[0].text = upgrade[0] + " " + str(upgrade[1])
+		labels[2].text = str(upgrade[2])
 		
 		grid.add_child(x)
 		

@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://db1nt5jxrrni7"]
+[gd_scene load_steps=3 format=3 uid="uid://db1nt5jxrrni7"]
 
 [ext_resource type="Script" path="res://Core/UI/Upgrade/Perm_Upgrades/upgrade_1.gd" id="1_4s8k5"]
-[ext_resource type="Texture2D" uid="uid://of0eu0uvymx4" path="res://Core/Game_Objects/UI_bar/sprite_0.png" id="1_c3ocr"]
-[ext_resource type="Texture2D" uid="uid://ys685311rwtf" path="res://Core/Game_Objects/UI_bar/sprite_1.png" id="2_75c3y"]
 [ext_resource type="LabelSettings" uid="uid://cnlaee001t7wj" path="res://Core/UI/Label_Fonts/text_upgrade.tres" id="3_dwspd"]
 
 [node name="Upgrade_1" type="MarginContainer"]
@@ -29,14 +27,6 @@ offset_right = 170.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Progress_to_max" type="TextureProgressBar" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-value = 50.0
-texture_under = ExtResource("1_c3ocr")
-texture_progress = ExtResource("2_75c3y")
-tint_progress = Color(0.333333, 0.352941, 0.564706, 1)
 
 [node name="Text_Upgrades" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
