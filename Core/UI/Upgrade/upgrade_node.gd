@@ -3,6 +3,7 @@ signal button_pressed
 var current_node 
 signal show_upgrades
 var saved = null
+signal back
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,12 +12,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#if a node joins the selected group display its upgrades
 	if get_tree().get_nodes_in_group("selected").size() > 0:
 		display_upgrades(get_tree().get_nodes_in_group("selected")[0])
 	else:
+		#if no nodes in the selected group  reset the saved node to null
 		saved = null
 	
-	print(get_tree().get_nodes_in_group("selected").size())
+	#print(get_tree().get_nodes_in_group("selected").size())
 	
 
 func display_upgrades(node):
@@ -62,3 +65,7 @@ func is_old_node(node):
 		return true
 	else:
 		return false
+
+
+func _on_back_pressed():
+	emit_signal("back")

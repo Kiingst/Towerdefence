@@ -12,14 +12,17 @@ var disabled = false
 
 signal fire
 
+@onready var upgrades = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Upgrades")
 #Upgradagle Variables
-var max_ammo = 10
-var reload_timer = 1
-var tower_damage = 1
-var ammo_increment = 1
-var money_per_kill = 1
-var attack_range
+
+@onready var max_ammo = upgrades.tower1_numbers[0]
+@onready var reload_timer = upgrades.tower1_numbers[1]
+@onready var tower_damage = upgrades.tower1_numbers[2]
+@onready var ammo_increment = upgrades.tower1_numbers[3]
+@onready var money_per_kill = upgrades.tower1_numbers[4]
+@onready var attack_range = upgrades.tower1_numbers[5]
 @export var projectile : PackedScene
+
 
 #special upgrades
 var double_fire = false
@@ -58,9 +61,11 @@ var upgrade_array = [upgrade1_data, upgrade2_data, upgrade3_data]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update()
-	
+	attack_range = $Attack_Range/CollisionShape2D.shape.radius
 	add_to_group("Towers")
 	add_to_group("Tower1")
+	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,6 +83,8 @@ func _process(delta):
 		$Attack_Range.visible = true
 	else:
 		$Attack_Range.visible = false
+	
+	
 
 func attack_enemy():
 	var x = $Attack_Range.get_overlapping_areas()

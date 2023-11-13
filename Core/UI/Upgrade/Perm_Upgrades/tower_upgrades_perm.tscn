@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnj4u5dg2hdga"]
+
+[ext_resource type="Script" path="res://Core/UI/Upgrade/Perm_Upgrades/tower_upgrades_perm.gd" id="1_gv677"]
+[ext_resource type="PackedScene" uid="uid://db1nt5jxrrni7" path="res://Core/UI/Upgrade/Perm_Upgrades/upgrade_1.tscn" id="1_hlk2n"]
+[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="2_hhhh4"]
+
+[node name="Tower_Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 4.0
+offset_right = 764.0
+offset_bottom = 5.0
+script = ExtResource("1_gv677")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_right = 384.0
+offset_bottom = 455.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Back_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Tower1" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower1"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="Tower2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower2"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="Tower3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower3"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="Tower4" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower4"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="Tower5" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower5"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="Tower6" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower6"]
+position = Vector2(25, 25)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_hhhh4")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+columns = 2
+
+[node name="Upgrade_1" parent="VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hlk2n")]
+layout_mode = 2
+
+[node name="Upgrade_2" parent="VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hlk2n")]
+layout_mode = 2
+
+[node name="Upgrade_3" parent="VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hlk2n")]
+layout_mode = 2
+
+[node name="Upgrade_4" parent="VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_hlk2n")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower1" to="." method="_on_tower_1_pressed"]
+[connection signal="button_presses" from="VBoxContainer/HBoxContainer/GridContainer/Upgrade_1" to="." method="_on_upgrade_button_presses"]

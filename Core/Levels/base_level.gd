@@ -16,6 +16,7 @@ func _ready():
 	for i in enemys.size():
 		enemys[i].connect("death",Callable(self,"death"))
 	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

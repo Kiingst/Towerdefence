@@ -17,8 +17,17 @@ func normal_tab():
 	$VBoxContainer/Top_Bar.visible = true
 	$VBoxContainer/Top_Buttons.visible = true
 	$VBoxContainer/Tower_Builder.visible = true
+	$VBoxContainer/Top_Margin.visible = true
 	
 	disable_middle_area()
+	
+
+func upgrade_tab():
+	normal_tab()
+	$VBoxContainer/Top_Margin.visible = false
+	$VBoxContainer/Top_Bar.visible = true
+	$VBoxContainer/Top_Buttons.visible = false
+	$VBoxContainer/Tower_Builder.visible = false
 
 
 func _on_tower_builder_tower_builder_button_pressed(price , tower):
@@ -32,22 +41,17 @@ func _on_upgrade_node_button_pressed(node , number):
 
 
 func _on_upgrade_node_show_upgrades():
-	normal_tab()
+	upgrade_tab()
 	
 	$VBoxContainer/Middle_area/Upgrade_node.visible = true
 
 
 func _on_tower_upgrades_pressed():
-	print("pressing button")
-	var x = get_tree().get_nodes_in_group("selected")
-	normal_tab()
+	#print("pressing button")
+	upgrade_tab()
 	
-	if x.size() > 0:
-		for i in x.size():
-			x[i].remove_from_selected()
+	clear_selected()
 	
-	
-	print("upgrade area visiblity is ", $VBoxContainer/Middle_area/Upgrade_node.visible)
 	$VBoxContainer/Middle_area/Tower_Upgrades.visible = true
 	
 
@@ -80,3 +84,18 @@ func _on_clicker_upgrades_pressed():
 
 func _on_rebirth_shop_pressed():
 	pass # Replace with function body.
+
+
+func _on_back_button_pressed():
+	print("pressing back button")
+	clear_selected()
+	normal_tab()
+	
+
+func clear_selected():
+	var x = get_tree().get_nodes_in_group("selected")
+	
+	if x.size() > 0:
+		for i in x.size():
+			x[i].remove_from_selected()
+
