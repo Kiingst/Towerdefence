@@ -36,12 +36,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	tower1 = {
-		"0" = ["Max ammo", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
-		"1" = ["Reload Time", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
-		"2" = ["Damage", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("2")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
-		"3" = ["Ammo Per Click", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("3")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
-		"4" = ["Money per Kill", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("4")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
-		"5" = ["Attack Range", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("5")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ]
+		"0" = ["Max ammo", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0") + 1) ],
+		"1" = ["Reload Time", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1") + 1) ],
+		"2" = ["Damage", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("2")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("2") + 1) ],
+		"3" = ["Ammo Per Click", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("3")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("3") + 1) ],
+		"4" = ["Money per Kill", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("4")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("4") + 1) ],
+		"5" = ["Attack Range", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("5")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("5") + 1) ]
 		
 	}
 
