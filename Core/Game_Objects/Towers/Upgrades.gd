@@ -5,6 +5,7 @@ var tower1_numbers = [10 , 1.0, 1.0, 1.0, 1, 250]
 var tower2 = []
 var tower3 = []
 
+
 var tower1_current_upgrade = {
 	"0" = 1,
 	"1" = 1,
@@ -48,3 +49,4 @@ func _process(delta):
 
 func get_upgrade_price(baseprice, multiplyer, current_num_bought):
 	return snapped(baseprice * pow(multiplyer, current_num_bought), 0.01)
+

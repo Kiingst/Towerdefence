@@ -2,7 +2,7 @@ extends Control
 #script is for getting upgradeable items from the selected tower and putting the upgrade out visually
 signal back_button
 
-var current_tower = null
+var current_tower = 1
 var upgrade_template = preload("res://Core/UI/Upgrade/Perm_Upgrades/upgrade_1.tscn")
 var upgrades
 var baselevel
@@ -34,37 +34,40 @@ func _on_tower_1_pressed():
 
 func upgrade_buy(upgrade_type, price, upgrade_table):
 	if baselevel.money > price:
-		print("bought upgrade " , upgrade_type[0])
+		print("bought upgrade " , upgrade_type[0], " at ", price)
+		
 		baselevel.money -= price
 		#apply upgrade
 		
 		#next price
 		var key = upgrade_table.find_key(upgrade_type)
+		var dict = return_current_tower_upgrade_level(current_tower)
 		
-		upgrades.tower1_current_upgrade[key] += 1
-		print(upgrades.tower1_current_upgrade[key])
+		dict[key] += 1
+		print(dict[key], " this one ", key)
+		
 		#clear_upgrade_hud()
-		_on_tower_1_pressed()
+		#_on_tower_1_pressed()
 
 
 func _on_upgrade_button_presses():
 	pass # Replace with function body.
 
 func display_upgrades(tower_upgrades):
-	clear_upgrade_hud()
+	#clear_upgrade_hud()
 	for i in tower_upgrades.size():
 		var upgrade = tower_upgrades.get(str(i))
-		#print(upgrade)
 		var x = upgrade_template.instantiate()
 		x.upgrade_type = upgrade
-		var labels = x.get_child(0).get_child(0).get_child(0).get_children()
+		
+		#var labels = x.get_child(0).get_child(0).get_child(0).get_children()
 		#print(labels)
-		labels[0].text = upgrade[0] + " " + str(upgrade[1])
-		labels[2].text = str(upgrade[2])
+		#labels[0].text = upgrade[0] + " " + str(upgrade[1])
+		#labels[2].text = str(upgrade[2])
+		#var button = x.get_child(0).get_child(0).get_child(1)
+		#button.text = "Buy " + str(upgrade[1]) + "$"
 		
-		var button = x.get_child(0).get_child(0).get_child(1)
-		
-		button.text = "Buy " + str(upgrade[1]) + "$"
+		x.text = "Buy " + str(upgrade[1]) + "$"
 		x.price = upgrade[1]
 		x.upgrade_table = tower_upgrades
 		x.connect("button_press",Callable(self,"upgrade_buy"))

@@ -3,15 +3,18 @@ signal button_press
 var upgrade_type 
 var price 
 var upgrade_table
+var text 
+var x = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous f	rame.
 func _process(delta):
-	pass
+	text = text
+	$ColorRect/VBoxContainer/Button.text = text
 
 
 func _on_button_pressed():
