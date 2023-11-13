@@ -112,4 +112,3 @@ layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Tower1" to="." method="_on_tower_1_pressed"]
-[connection signal="button_presses" from="VBoxContainer/HBoxContainer/GridContainer/Upgrade_1" to="." method="_on_upgrade_button_presses"]

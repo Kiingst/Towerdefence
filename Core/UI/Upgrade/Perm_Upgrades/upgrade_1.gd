@@ -1,5 +1,8 @@
 extends MarginContainer
-signal button_presses
+signal button_press
+var upgrade_type 
+var price 
+var upgrade_table
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,4 +15,5 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	emit_signal("button_press", upgrade_type, price, upgrade_table)
+	
