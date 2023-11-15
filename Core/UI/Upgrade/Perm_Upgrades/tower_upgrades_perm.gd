@@ -54,7 +54,7 @@ func _on_upgrade_button_presses():
 	pass # Replace with function body.
 
 func display_upgrades(tower_upgrades):
-	#clear_upgrade_hud()
+	clear_upgrade_hud()
 	for i in tower_upgrades.size():
 		var upgrade = tower_upgrades.get(str(i))
 		var x = upgrade_template.instantiate()
