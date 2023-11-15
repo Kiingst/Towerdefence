@@ -16,7 +16,7 @@ var tower1_current_upgrade = {
 	
 }
 
-var tower1 = {
+var tower1_data = {
 	#syntax name, current_price, curent_price + 1
 	"0" = ["Max ammo", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0")), 10 * pow(1.15, tower1_current_upgrade.get("0") + 1) ],
 	"1" = ["Reload Time", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1")), 10 * pow(1.15, tower1_current_upgrade.get("1") + 1) ],
@@ -31,12 +31,12 @@ var tower1 = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Signals.Upgrade.new(1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	tower1 = {
+	tower1_data = {
 		"0" = ["Max ammo", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("0") + 1) ],
 		"1" = ["Reload Time", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("1") + 1) ],
 		"2" = ["Damage", get_upgrade_price(10, 1.15, tower1_current_upgrade.get("2")), get_upgrade_price(10, 1.15, tower1_current_upgrade.get("2") + 1) ],

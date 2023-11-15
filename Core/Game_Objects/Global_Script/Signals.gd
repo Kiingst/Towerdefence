@@ -11,3 +11,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+class Upgrade:
+	#member variables
+	var another : int
+	
+	func _init(another1):
+		another = another1
+	
+	func getAnother():
+		return another
