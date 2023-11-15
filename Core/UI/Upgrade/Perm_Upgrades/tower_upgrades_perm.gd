@@ -54,11 +54,14 @@ func _on_upgrade_button_presses():
 	pass # Replace with function body.
 
 func display_upgrades(tower_upgrades):
-	clear_upgrade_hud()
-	for i in tower_upgrades.size():
-		var upgrade = tower_upgrades.get(str(i))
-		var x = upgrade_template.instantiate()
-		x.upgrade_type = upgrade
+	#clear_upgrade_hud()
+	pass
+	
+	
+	#for i in tower_upgrades.size():
+	#	var upgrade = tower_upgrades.get(str(i))
+	#	var x = upgrade_template.instantiate()
+	#	x.upgrade_type = upgrade
 		
 		#var labels = x.get_child(0).get_child(0).get_child(0).get_children()
 		#print(labels)
@@ -67,11 +70,11 @@ func display_upgrades(tower_upgrades):
 		#var button = x.get_child(0).get_child(0).get_child(1)
 		#button.text = "Buy " + str(upgrade[1]) + "$"
 		
-		x.text = "Buy " + str(upgrade[1]) + "$"
-		x.price = upgrade[1]
-		x.upgrade_table = tower_upgrades
-		x.connect("button_press",Callable(self,"upgrade_buy"))
-		grid.add_child(x)
+	#	x.text = "Buy " + str(upgrade[1]) + "$"
+	#	x.price = upgrade[1]
+	#	x.upgrade_table = tower_upgrades
+	#	x.connect("button_press",Callable(self,"upgrade_buy"))
+	#	grid.add_child(x)
 		
 
 func return_current_tower_upgrade_level(number):
