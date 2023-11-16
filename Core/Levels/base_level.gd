@@ -5,6 +5,7 @@ var Currently_accepted
 var build_mode = false
 
 var build_mode_turret 
+var build_price
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +48,7 @@ func _process(delta):
 			
 			if good_placement == true:
 				#places turret
-				GlobalVars.money -= build_mode_turret.price
+				GlobalVars.money -= build_price
 				build_mode_turret.global_position = snapped(get_global_mouse_position(), Vector2(32,32))
 				build_mode_turret.disabled = false
 				placed = true
@@ -89,16 +90,17 @@ func _on_test_level_life_loss(loss):
 	health -= loss
 
 #runs on tower being bought
-func _on_tower_builder_tower_builder_button_pressed(price, tower):
-	if price <= GlobalVars.money:
+func _on_tower_builder_tower_builder_button_pressed(tower):
+	if tower.get_price() <= GlobalVars.money:
 		start_build_mode(tower)
+		build_price = tower.get_price()
 	else:
 		print("You donthave enough money")
 	
 
 
-func start_build_mode(packed_scene):
-	build_mode_turret = packed_scene.instantiate()
+func start_build_mode(tower):
+	build_mode_turret = tower.packed_scene.instantiate()
 	build_mode_turret.disabled = true
 	build_mode = true
 	add_child(build_mode_turret)

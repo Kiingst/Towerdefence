@@ -7,7 +7,6 @@ var enemys_in_range = false
 var icon = "res://icon.svg"
 
 #variables
-var price = 10 
 var disabled = false
 
 signal fire

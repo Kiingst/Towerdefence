@@ -48,14 +48,23 @@ class tower:
 	var money_per_kill = 1
 	var attack_range = 250
 	
+	var base_price: float
+	var multiplier: float
+	var level = 0
+	
 	var tower_id : int
 	
-	func _init(tower_id1, upgrades1  = [], ):
+	var packed_scene : PackedScene
+	
+	func _init(base_price1, multiplier1,tower_id1,tower_scene1, upgrades1  = [], ):
 		for i in upgrades1.size():
 			upgrades1[i].id = current_id
 			current_id += 1
-		upgrades = upgrades1
 		
+		upgrades = upgrades1
+		packed_scene = tower_scene1
+		base_price = base_price1
+		multiplier = multiplier1
 		tower_id = tower_id1
 	
 	func add_upgrade(upgrade):
@@ -68,3 +77,7 @@ class tower:
 		for i in upgrades.size():
 			x += upgrades[i].names + " id is " + str(upgrades[i].id) + ", "
 		return x
+	
+	func get_price():
+		#print(base_price, " * ", "(", multiplier, ")", "^" ,level)
+		return snapped(base_price * pow(multiplier, level), 0.01)

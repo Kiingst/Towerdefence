@@ -11,6 +11,8 @@ signal tower_builder_button_pressed
 #@export var Button7 : PackedScene
 #@export var Button8 : PackedScene
 
+var Tower_data
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,13 +20,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	Tower_data = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Tower_Data")
 
 
 func _on_button_1_pressed():
-	var t = tower1.instantiate()
-	emit_signal("tower_builder_button_pressed", t.price, tower1)
-	t.queue_free()
+	emit_signal("tower_builder_button_pressed" , Tower_data.tower1)
 
 
 func _on_button_2_pressed():

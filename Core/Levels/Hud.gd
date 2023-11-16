@@ -32,8 +32,8 @@ func upgrade_tab():
 	$VBoxContainer/Bottom_margin.visible = false
 
 
-func _on_tower_builder_tower_builder_button_pressed(price , tower):
-	emit_signal("tower_builder_button_pressed" , price , tower)
+func _on_tower_builder_tower_builder_button_pressed(tower):
+	emit_signal("tower_builder_button_pressed" , tower)
 	
 
 
