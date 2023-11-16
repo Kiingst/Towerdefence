@@ -18,6 +18,7 @@ func normal_tab():
 	$VBoxContainer/Top_Buttons.visible = true
 	$VBoxContainer/Tower_Builder.visible = true
 	$VBoxContainer/Top_Margin.visible = true
+	$VBoxContainer/Bottom_margin.visible = true
 	
 	disable_middle_area()
 	
@@ -28,6 +29,7 @@ func upgrade_tab():
 	$VBoxContainer/Top_Bar.visible = true
 	$VBoxContainer/Top_Buttons.visible = false
 	$VBoxContainer/Tower_Builder.visible = false
+	$VBoxContainer/Bottom_margin.visible = false
 
 
 func _on_tower_builder_tower_builder_button_pressed(price , tower):

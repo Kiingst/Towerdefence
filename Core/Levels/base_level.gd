@@ -1,5 +1,4 @@
 extends Node2D
-var money = 10000000
 var click_damage = 1
 var health = 100
 var Currently_accepted
@@ -23,7 +22,7 @@ func _ready():
 func _process(delta):
 	
 	var format_string_money = "Gold %s"
-	$Hud/VBoxContainer/Top_Bar/Money_Count.set_text(format_string_money % money) 
+	$Hud/VBoxContainer/Top_Bar/Money_Count.set_text(format_string_money % GlobalVars.money) 
 	var format_string_health = "Health %s"  
 	$Hud/VBoxContainer/Top_Bar/Health_Count.set_text(format_string_health % health)
 	
@@ -48,7 +47,7 @@ func _process(delta):
 			
 			if good_placement == true:
 				#places turret
-				money -= build_mode_turret.price
+				GlobalVars.money -= build_mode_turret.price
 				build_mode_turret.global_position = snapped(get_global_mouse_position(), Vector2(32,32))
 				build_mode_turret.disabled = false
 				placed = true
@@ -66,7 +65,7 @@ func _process(delta):
 
 
 func death(value):
-	money += value
+	GlobalVars.money += value
 
 
 func _on_test_level_spawn_enemy(enemy):
@@ -91,7 +90,7 @@ func _on_test_level_life_loss(loss):
 
 #runs on tower being bought
 func _on_tower_builder_tower_builder_button_pressed(price, tower):
-	if price <= money:
+	if price <= GlobalVars.money:
 		start_build_mode(tower)
 	else:
 		print("You donthave enough money")
@@ -117,8 +116,8 @@ func _on_upgrade_node_button_pressed(node, upgrade):
 	# "Upgrade" = ["Upgrade_text", "Cost", "Code"]
 	var price = int(inner_upgrade_array[1])
 	
-	if price <= money:
-		money -= price
+	if price <= GlobalVars.money:
+		GlobalVars.money -= price
 		node.current_upgrade_value_add()
 		apply_upgrade(node, inner_upgrade_array[2])
 

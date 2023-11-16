@@ -12,15 +12,15 @@ var disabled = false
 
 signal fire
 
-@onready var upgrades = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Upgrades")
+@onready var upgrades = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Tower_Data")
 #Upgradagle Variables
 
-@onready var max_ammo = upgrades.tower1_numbers[0]
-@onready var reload_timer = upgrades.tower1_numbers[1]
-@onready var tower_damage = upgrades.tower1_numbers[2]
-@onready var ammo_increment = upgrades.tower1_numbers[3]
-@onready var money_per_kill = upgrades.tower1_numbers[4]
-@onready var attack_range = upgrades.tower1_numbers[5]
+@onready var max_ammo = upgrades.tower1.max_ammo
+@onready var reload_timer = upgrades.tower1.reload_timer
+@onready var tower_damage = upgrades.tower1.tower_damage
+@onready var ammo_increment = upgrades.tower1.ammo_increment
+@onready var money_per_kill = upgrades.tower1.money_per_kill
+@onready var attack_range = upgrades.tower1.attack_range
 @export var projectile : PackedScene
 
 

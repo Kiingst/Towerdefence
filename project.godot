@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*res://Core/Game_Objects/Global_Script/Signals.gd"
+Classes="*res://Core/Game_Objects/Global_Script/Classes.gd"
+GlobalVars="*res://Core/Game_Objects/Global_Script/Global_Vars.gd"
 
 [display]
 

@@ -2,10 +2,11 @@ extends Control
 #script is for getting upgradeable items from the selected tower and putting the upgrade out visually
 signal back_button
 
-var current_tower = 1
+var current_tower = 0
 var upgrade_template = preload("res://Core/UI/Upgrade/Perm_Upgrades/upgrade_1.tscn")
 var upgrades
 var baselevel
+var Tower_data
 @onready var grid = $VBoxContainer/HBoxContainer/GridContainer
 
 
@@ -20,7 +21,7 @@ func _ready():
 
 
 func _process(delta):
-	upgrades = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Upgrades")
+	Tower_data = get_tree().get_nodes_in_group("Base_Level")[0].get_node("Tower_Data")
 	baselevel = get_tree().get_nodes_in_group("Base_Level")[0]
 
 
@@ -29,61 +30,32 @@ func _on_back_button_pressed():
 
 
 func _on_tower_1_pressed():
-		display_upgrades(upgrades.tower1)
-		current_tower = 1
-
-func upgrade_buy(upgrade_type, price, upgrade_table):
-	if baselevel.money > price:
-		print("bought upgrade " , upgrade_type[0], " at ", price)
+	change_tower(Tower_data.tower1)
 		
-		baselevel.money -= price
-		#apply upgrade
-		
-		#next price
-		var key = upgrade_table.find_key(upgrade_type)
-		var dict = return_current_tower_upgrade_level(current_tower)
-		
-		dict[key] += 1
-		print(dict[key], " this one ", key)
-		
-		#clear_upgrade_hud()
-		#_on_tower_1_pressed()
 
 
 func _on_upgrade_button_presses():
 	pass # Replace with function body.
 
-func display_upgrades(tower_upgrades):
-	#clear_upgrade_hud()
+func display_upgrades(tower):
+	clear_upgrade_hud()
 	pass
 	
-	
-	#for i in tower_upgrades.size():
-	#	var upgrade = tower_upgrades.get(str(i))
-	#	var x = upgrade_template.instantiate()
-	#	x.upgrade_type = upgrade
-		
-		#var labels = x.get_child(0).get_child(0).get_child(0).get_children()
-		#print(labels)
-		#labels[0].text = upgrade[0] + " " + str(upgrade[1])
-		#labels[2].text = str(upgrade[2])
-		#var button = x.get_child(0).get_child(0).get_child(1)
-		#button.text = "Buy " + str(upgrade[1]) + "$"
-		
-	#	x.text = "Buy " + str(upgrade[1]) + "$"
-	#	x.price = upgrade[1]
-	#	x.upgrade_table = tower_upgrades
-	#	x.connect("button_press",Callable(self,"upgrade_buy"))
-	#	grid.add_child(x)
+	for i in tower.upgrades.size():
+		var x = upgrade_template.instantiate()
+		#x.upgrade = tower.upgrades[i]
+		x.display_upgrade(tower.upgrades[i])
+		grid.add_child(x)
 		
 
-func return_current_tower_upgrade_level(number):
-	match number:
-		1:
-			return upgrades.tower1_current_upgrade
-	
 
 func clear_upgrade_hud():
 	var x = $VBoxContainer/HBoxContainer/GridContainer.get_children()
 	for i in x.size():
 		$VBoxContainer/HBoxContainer/GridContainer.remove_child(x[i])
+
+func change_tower(tower):
+	if current_tower == tower.tower_id:
+		pass
+	else:
+		display_upgrades(tower)

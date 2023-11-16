@@ -28,10 +28,6 @@ position = Vector2(788.945, 1.33514e-05)
 scale = Vector2(0.968182, 1)
 curve = SubResource("Curve2D_xgj12")
 
-[node name="Enemy" parent="Path2D" instance=ExtResource("2_tvm1v")]
-position = Vector2(1041.83, 928)
-progress = 3424.1
-
 [node name="Spawn_Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true

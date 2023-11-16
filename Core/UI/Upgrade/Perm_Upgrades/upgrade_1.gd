@@ -1,22 +1,35 @@
 extends MarginContainer
 signal button_press
-var upgrade_type 
-var price 
-var upgrade_table
-var text 
+var upgrade
 var x = 1
+var process = false
+
+
 
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	#display_upgrade(upgrade)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous f	rame.
 func _process(delta):
-	text = text
-	$ColorRect/VBoxContainer/Button.text = text
-
+	#text = text
+	#$ColorRect/VBoxContainer/Button.text = text
+	if process:
+		$ColorRect/VBoxContainer/Button.text = "Buy " + str(upgrade.get_price()) + "$"
+		$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names
+	
+	
 
 func _on_button_pressed():
-	emit_signal("button_press", upgrade_type, price, upgrade_table)
+	#emit_signal("button_press", upgrade_type, price, upgrade_table)
+	upgrade.buy_upgrade()
+
+func display_upgrade(upgrade1):
+	upgrade = upgrade1
+	$ColorRect/VBoxContainer/Button.text = "Buy " + str(upgrade.get_price()) + "$"
+	$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names
 	
+	process = true

@@ -30,7 +30,7 @@ offset_right = 2043.0
 offset_bottom = 1147.0
 color = Color(0.447059, 0.447059, 0.447059, 0.364706)
 
-[node name="Upgrades" type="Node" parent="."]
+[node name="Tower_Data" type="Node" parent="."]
 script = ExtResource("6_ryb6a")
 
 [connection signal="life_loss" from="Test_Level" to="." method="_on_test_level_life_loss"]
