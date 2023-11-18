@@ -19,15 +19,21 @@ class upgrade:
 	var id : int
 	var level: int = 0
 	
-	func _init(name1, price, multiplier1, id1 = 0):
+	#base_num multiplier level
+	var upgrade_data: Array
+	
+	func _init(name1, price, multiplier1, upgrade_data1, id1 = 0):
 		names = name1
 		base_price = price
 		multiplier = multiplier1
 		id = id1
+		upgrade_data = upgrade_data1
+		
 	
 	func get_price():
 		return snapped(base_price * pow(multiplier, level), 0.01)
 		
+	
 	func buy_upgrade():
 		if GlobalVars.money >= get_price():
 			level += 1
@@ -35,6 +41,12 @@ class upgrade:
 			GlobalVars.money -= get_price()
 			GlobalVars.money = snapped(GlobalVars.money, 0.01)
 		
+		
+	
+	func get_upgrade_data():
+		return snapped(upgrade_data[0] * pow(upgrade_data[1], level), 0.01)
+	
+
 
 
 
