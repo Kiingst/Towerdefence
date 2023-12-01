@@ -51,10 +51,12 @@ label_settings = ExtResource("2_or5do")
 horizontal_alignment = 2
 
 [node name="Top_Margin" type="MarginContainer" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 100)
 layout_mode = 2
 
 [node name="Top_Buttons" type="Control" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 
@@ -104,22 +106,33 @@ layout_mode = 2
 [node name="Middle_area" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 400)
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Upgrade_node" parent="VBoxContainer/Middle_area" instance=ExtResource("3_a6ykb")]
 visible = false
 layout_mode = 2
 offset_top = 4.0
 offset_right = 768.0
-offset_bottom = 404.0
+offset_bottom = 4.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Middle_area"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 44.0
 
 [node name="Tower_Upgrades" parent="VBoxContainer/Middle_area" instance=ExtResource("4_xspyw")]
-visible = false
+layout_mode = 2
+offset_right = 780.0
+offset_bottom = 4.0
 
 [node name="Bottom_margin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 
 [node name="Tower_Builder" parent="VBoxContainer" instance=ExtResource("4_173a8")]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Top_Buttons/Top_Buttons/Tower_Upgrades" to="." method="_on_tower_upgrades_pressed"]

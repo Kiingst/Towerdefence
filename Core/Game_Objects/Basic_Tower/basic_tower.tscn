@@ -23,7 +23,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_go6sk")
 
 [node name="Attack_Range" type="Area2D" parent="."]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Range"]
@@ -56,6 +55,7 @@ offset_left = -33.0
 offset_top = 24.0
 offset_right = 31.0
 offset_bottom = 29.0
+step = 0.1
 value = 50.0
 texture_under = ExtResource("3_6tvxa")
 texture_progress = ExtResource("4_uux3p")

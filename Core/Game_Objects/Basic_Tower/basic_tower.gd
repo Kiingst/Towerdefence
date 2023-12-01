@@ -64,6 +64,8 @@ func _ready():
 	add_to_group("Towers")
 	add_to_group("Tower1")
 	
+	
+	
 
 
 
@@ -71,7 +73,7 @@ func _ready():
 func _process(delta):
 	if not disabled:
 		#print($Attack_Range.get_overlapping_areas())
-		if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo > 0 :
+		if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo >= 1 :
 			attack_enemy()
 		$Ammo_bar.value = ammo
 		
@@ -83,6 +85,7 @@ func _process(delta):
 	else:
 		$Attack_Range.visible = false
 	
+	update()
 	
 
 func attack_enemy():
@@ -95,6 +98,7 @@ func attack_enemy():
 			#print("shooting at " ,y)
 			#y.get_parent().take_damage(tower_damage) 
 			ammo -= 1
+			
 
 func shoot_at_enemy(enemy):
 	var vec_to_enemy = enemy.global_position - global_position
@@ -103,6 +107,7 @@ func shoot_at_enemy(enemy):
 	var direction = Vector2(1,0).rotated($Barell.global_rotation)
 	#fire(projectile , $Barell/Marker2D.global_position, direction)
 	emit_signal('fire', projectile , $Barell/Marker2D.global_position, direction, tower_damage)
+	#print(tower_damage)
 	#print("shooting at " ,enemy)
 	#ammo -= 1
 	pass
@@ -136,11 +141,22 @@ func _on_clickable_area_input_event(viewport, event, shape_idx):
 	
 
 func update():
+	#constanly update turret values
+	max_ammo = upgrades.tower1.max_ammo
 	$Ammo_bar.max_value = max_ammo
-	$Ammo_bar.step = ammo_increment
-	$Reload_Timer.wait_time = reload_timer
+	ammo_increment = upgrades.tower1.ammo_increment
+	$Reload_Timer.wait_time = upgrades.tower1.reload_timer
+	tower_damage = upgrades.tower1.tower_damage
+	money_per_kill = upgrades.tower1.money_per_kill
 	
-
+	#1print("value: ",$Ammo_bar.value, " Step: ", upgrades.tower1.ammo_increment, " Max Value: ", max_ammo)
+	
+	
+	$Attack_Range/CollisionShape2D.shape.radius = upgrades.tower1.attack_range
+	var x = upgrades.tower1.attack_range / 250
+	$Attack_Range/Visible_Attack_Range/Outter.scale = Vector2(x, x)
+	$Attack_Range/Visible_Attack_Range/Inner.scale = Vector2(x, x)
+	
 func remove_from_selected():
 	remove_from_group("selected")
 	

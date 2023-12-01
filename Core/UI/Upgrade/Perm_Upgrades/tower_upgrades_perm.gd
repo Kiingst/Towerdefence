@@ -41,6 +41,7 @@ func display_upgrades(tower):
 	clear_upgrade_hud()
 	pass
 	
+	#creates each upgrade box
 	for i in tower.upgrades.size():
 		var x = upgrade_template.instantiate()
 		#x.upgrade = tower.upgrades[i]

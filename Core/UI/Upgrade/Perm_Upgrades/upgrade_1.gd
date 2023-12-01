@@ -19,7 +19,8 @@ func _process(delta):
 	#$ColorRect/VBoxContainer/Button.text = text
 	if process:
 		$ColorRect/VBoxContainer/Button.text = "Buy " + str(upgrade.get_price()) + "$"
-		$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names
+		$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names + " " + str(upgrade.get_upgrade_data())
+		$ColorRect/VBoxContainer/Text_Upgrades/Next.text = str(upgrade.get_upgrade_data(1))
 	
 	
 
@@ -30,6 +31,6 @@ func _on_button_pressed():
 func display_upgrade(upgrade1):
 	upgrade = upgrade1
 	$ColorRect/VBoxContainer/Button.text = "Buy " + str(upgrade.get_price()) + "$"
-	$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names
-	
+	$ColorRect/VBoxContainer/Text_Upgrades/Current.text = upgrade.names + " " + str(upgrade.get_upgrade_data())
+	$ColorRect/VBoxContainer/Text_Upgrades/Next.text = str(upgrade.get_upgrade_data(1))
 	process = true
