@@ -6,6 +6,9 @@ var can_shoot = true
 var enemys_in_range = false
 var icon = "res://icon.svg"
 
+
+var placed = false
+var good_placement_area = false
 #variables
 var disabled = false
 
@@ -71,6 +74,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if placed:
+		tower_process(delta)
+	else:
+		var y = $Clickable_Area.get_overlapping_areas()
+		
+		for i in y.size():
+			if "Upgrades_Area" or "Track_area" in y[i].name:
+				good_placement_area = false
+		
+		if y.size() == 0:
+			good_placement_area = true
+		
+
+
+
+func tower_process(delta):
 	if not disabled:
 		#print($Attack_Range.get_overlapping_areas())
 		if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo >= 1 :
@@ -86,7 +105,6 @@ func _process(delta):
 		$Attack_Range.visible = false
 	
 	update()
-	
 
 func attack_enemy():
 	var x = $Attack_Range.get_overlapping_areas()
@@ -105,12 +123,8 @@ func shoot_at_enemy(enemy):
 	vec_to_enemy = vec_to_enemy.normalized()
 	$Barell.global_rotation = atan2(vec_to_enemy.y, vec_to_enemy.x)
 	var direction = Vector2(1,0).rotated($Barell.global_rotation)
-	#fire(projectile , $Barell/Marker2D.global_position, direction)
-	emit_signal('fire', projectile , $Barell/Marker2D.global_position, direction, tower_damage)
-	#print(tower_damage)
-	#print("shooting at " ,enemy)
-	#ammo -= 1
-	pass
+	
+	emit_signal('fire', projectile , $Barell/Marker2D.global_position, direction, tower_damage, upgrades.tower1)
 
 func clicked():
 	if max_ammo > ammo:

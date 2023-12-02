@@ -20,6 +20,7 @@ position = Vector2(1310, 160)
 [node name="Hud" parent="." instance=ExtResource("5_1iinr")]
 
 [node name="Step" type="Marker2D" parent="."]
+visible = false
 position = Vector2(32, 32)
 
 [node name="Build_Cover" type="ColorRect" parent="."]

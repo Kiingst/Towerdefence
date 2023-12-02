@@ -47,6 +47,7 @@ Right_Click={
 2d_physics/layer_3="Bullets"
 2d_physics/layer_4="players_body"
 2d_physics/layer_5="Clickers"
+2d_physics/layer_6="Non_Placement_area"
 
 [rendering]
 

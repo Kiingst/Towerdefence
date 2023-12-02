@@ -35,7 +35,8 @@ func _process(delta):
 		var snap = snapped(get_global_mouse_position(), Vector2(32,32))
 		var x = fmod((snap.x / 32), 2) == 1
 		var y = fmod((snap.y / 32), 2) == 1
-		if x and y:
+		
+		if (x and y) and build_mode_turret.good_placement_area:
 			good_placement = true
 			#make green if good placemet
 			build_mode_turret.modulate = Color(0 ,1, 0)
@@ -52,6 +53,7 @@ func _process(delta):
 				build_mode_turret.global_position = snapped(get_global_mouse_position(), Vector2(32,32))
 				build_mode_turret.disabled = false
 				placed = true
+				build_mode_turret.placed = true
 				build_mode = false
 				build_mode_turret.modulate = Color(1 ,1, 1)
 				$Build_Cover.visible = false
@@ -61,8 +63,7 @@ func _process(delta):
 				$Build_Cover.visible = false
 				build_mode = false
 				print("didnt place")
-	
-	
+
 
 
 func death(value):
@@ -79,8 +80,9 @@ func _on_test_level_spawn_enemy(enemy):
 #		enemys[i].connect("death",Callable(self,"death"))
 
 
-func _on_basic_tower_fire(projectile, _position, _direction, tower_damage):
+func _on_basic_tower_fire(projectile, _position, _direction, tower_damage, tower):
 	var p = projectile.instantiate()
+	p.tower = tower
 	add_child(p)
 	p.Bullet_Damage = tower_damage
 	p.start(_position, _direction)

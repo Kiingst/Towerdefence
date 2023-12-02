@@ -42,12 +42,16 @@ position = Vector2(80, 144)
 shape = SubResource("RectangleShape2D_1bfgh")
 
 [node name="Upgrades_Area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upgrades_Area"]
 position = Vector2(372, 548)
 shape = SubResource("RectangleShape2D_r8i7l")
 
 [node name="Track_area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Track_area"]
 polygon = PackedVector2Array(768, 72, 1720, 72, 1720, 376, 1272, 376, 1272, 632, 1008, 632, 1008, 904, 1920, 904, 1920, 952, 968, 952, 968, 584, 1224, 584, 1224, 328, 1672, 328, 1672, 120, 768, 120)
