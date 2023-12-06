@@ -50,6 +50,15 @@ text = "Gold 0"
 label_settings = ExtResource("2_or5do")
 horizontal_alignment = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Top_Bar"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="Current_Cound" type="Label" parent="VBoxContainer/Top_Bar"]
+layout_mode = 2
+text = "Round 0/0"
+label_settings = ExtResource("2_or5do")
+
 [node name="Top_Margin" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 100)
 layout_mode = 2
