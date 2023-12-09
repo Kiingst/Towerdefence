@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgsw0refy6cjd"]
+[gd_scene load_steps=8 format=3 uid="uid://bgsw0refy6cjd"]
 
 [ext_resource type="PackedScene" uid="uid://oighgucc4rm4" path="res://Core/Levels/Test_Folder/test_tile_map.tscn" id="1_dpu8i"]
 [ext_resource type="Script" path="res://Core/Levels/Test_Folder/test_level.gd" id="1_go2qw"]
 [ext_resource type="PackedScene" uid="uid://cx8tifjghr6x1" path="res://Core/Game_Objects/Enemys/Basic_Enemy/enemy.tscn" id="2_tvm1v"]
+[ext_resource type="PackedScene" uid="uid://cgibqfyre185j" path="res://Core/Game_Objects/Enemys/Disabling_enemy/disabling_enemy1.tscn" id="4_1upj1"]
 
 [sub_resource type="Curve2D" id="Curve2D_xgj12"]
 _data = {
@@ -27,6 +28,9 @@ layer_0/tile_data = PackedInt32Array(12, 0, 0, 65548, 0, 1, 131084, 0, 0, 196620
 position = Vector2(788.945, 1.33514e-05)
 scale = Vector2(0.968182, 1)
 curve = SubResource("Curve2D_xgj12")
+
+[node name="disabling_enemy" parent="Path2D" instance=ExtResource("4_1upj1")]
+position = Vector2(-96, 96)
 
 [node name="Spawn_Timer" type="Timer" parent="."]
 wait_time = 5.0

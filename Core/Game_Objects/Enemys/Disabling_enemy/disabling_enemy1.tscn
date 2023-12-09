@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgibqfyre185j"]
+
+[ext_resource type="Script" path="res://Core/Game_Objects/Enemys/Disabling_enemy/disabling_enemy1.gd" id="1_mvdjr"]
+[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="2_gqdem"]
+[ext_resource type="Texture2D" uid="uid://vahpgx1ahy5g" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar0.png" id="3_a7vno"]
+[ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_jnv4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eymve"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rpr6"]
+size = Vector2(32, 32)
+
+[node name="disabling_enemy" type="PathFollow2D"]
+script = ExtResource("1_mvdjr")
+health = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_gqdem")
+
+[node name="Disable_Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Disable_Area"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_eymve")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Disable_Area"]
+position = Vector2(0, 63)
+shape = SubResource("RectangleShape2D_eymve")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Disable_Area"]
+position = Vector2(64, -1)
+shape = SubResource("RectangleShape2D_eymve")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Disable_Area"]
+position = Vector2(-65, 0)
+shape = SubResource("RectangleShape2D_eymve")
+
+[node name="Disable_time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Clickable_Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable_Area"]
+shape = SubResource("RectangleShape2D_7rpr6")
+
+[node name="Time_to_disable" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = 18.0
+offset_right = 32.0
+offset_bottom = 23.0
+step = 0.1
+texture_under = ExtResource("3_a7vno")
+texture_progress = ExtResource("4_jnv4p")
+
+[connection signal="timeout" from="Disable_time" to="." method="_on_disable_time_timeout"]
+[connection signal="timeout" from="Time_to_disable" to="." method="_on_time_to_disable_timeout"]

@@ -91,13 +91,17 @@ func _process(delta):
 
 func tower_process(delta):
 	if not disabled:
-		#print($Attack_Range.get_overlapping_areas())
+		$Sprite2D/Disabled.visible = false
+		
 		if can_shoot == true && $Attack_Range.get_overlapping_areas().size() > 0 && ammo >= 1 :
 			attack_enemy()
 		$Ammo_bar.value = ammo
 		
 		if Input.is_action_just_released("Right_Click"):
 			selected = false
+	else:
+		$Sprite2D/Disabled.visible = true
+	
 	
 	if selected == true:
 		$Attack_Range.visible = true
