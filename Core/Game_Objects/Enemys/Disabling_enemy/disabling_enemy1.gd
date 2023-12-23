@@ -5,6 +5,13 @@ var rng = RandomNumberGenerator.new()
 var moving = true
 var tower_to_disable
 var currently_disabling = false
+var disabled = false
+
+
+@onready var Animation_tree = $AnimationTree
+@onready var Animation_mode = Animation_tree.get("parameters/playback")
+
+
 
 var x 
 
@@ -21,18 +28,20 @@ func _ready():
 	$HealthBar.max_value = health
 	$HealthBar.value = health
 	add_to_group("Enemys")
+	Animation_mode.travel("moving")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	$HealthBar.value = health
 	if health <= 0:
 		if current_tower_attacked != null:
 			emit_signal("death", current_tower_attacked.money_per_kill + value)
 		else:
 			emit_signal("death", value)
-		queue_free()
+		
+		Animation_mode.travel("death")
+
 	
 	if not currently_disabling:
 		var x = $Disable_Area.get_overlapping_areas()
@@ -72,6 +81,7 @@ func _on_time_to_disable_timeout():
 
 func _on_disable_time_timeout():
 	tower_to_disable.disabled = false
-	queue_free()
+	Animation_mode.travel("disabling")
+
 
 

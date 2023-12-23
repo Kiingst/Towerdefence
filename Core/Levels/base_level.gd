@@ -70,11 +70,11 @@ func death(value):
 	GlobalVars.money += value
 
 
-func _on_test_level_spawn_enemy(enemy, size = null, health = null, move_speed = null):
+func _on_test_level_spawn_enemy(enemy, size = null, health1 = null, move_speed = null):
 	var e = enemy.instantiate()
 	if size != null:
 		e.size = size
-		e.health = health
+		e.health = health1
 		e.move_speed = move_speed
 	$Test_Level/Path2D.add_child(e)
 	

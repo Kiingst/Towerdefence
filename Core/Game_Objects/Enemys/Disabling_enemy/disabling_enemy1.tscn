@@ -1,9 +1,199 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgibqfyre185j"]
+[gd_scene load_steps=29 format=3 uid="uid://cgibqfyre185j"]
 
 [ext_resource type="Script" path="res://Core/Game_Objects/Enemys/Disabling_enemy/disabling_enemy1.gd" id="1_mvdjr"]
-[ext_resource type="Texture2D" uid="uid://k27tmh5hguel" path="res://icon.svg" id="2_gqdem"]
+[ext_resource type="Texture2D" uid="uid://c684rj2j3wytw" path="res://Core/Game_Objects/Enemys/sprites/sprite_0.png" id="2_3ukem"]
 [ext_resource type="Texture2D" uid="uid://vahpgx1ahy5g" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar0.png" id="3_a7vno"]
+[ext_resource type="Texture2D" uid="uid://dewt87m4o2ghi" path="res://Core/Game_Objects/Enemys/sprites/sprite_1.png" id="3_cchrf"]
 [ext_resource type="Texture2D" uid="uid://rksxeecf3sjl" path="res://Core/Game_Objects/Ammo_Bar/Health_Bar_inner.png" id="4_jnv4p"]
+[ext_resource type="Texture2D" uid="uid://dnilhtmyrhm03" path="res://Core/Game_Objects/Enemys/sprites/sprite_2.png" id="4_xrbps"]
+[ext_resource type="Texture2D" uid="uid://dl3rmf26r8brs" path="res://Core/Game_Objects/Enemys/sprites/sprite_3.png" id="5_itatx"]
+[ext_resource type="Texture2D" uid="uid://cug4dfppth5vx" path="res://Core/Game_Objects/Enemys/sprites/sprite_4.png" id="6_75d15"]
+[ext_resource type="Texture2D" uid="uid://ckywh7j5gwdo2" path="res://Core/Game_Objects/Enemys/sprites/sprite_5.png" id="7_lwews"]
+
+[sub_resource type="Animation" id="Animation_tjcn0"]
+resource_name = "moving"
+length = 0.7
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.43, 0.55, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_3ukem"), ExtResource("3_cchrf"), ExtResource("4_xrbps"), ExtResource("5_itatx"), ExtResource("6_75d15"), ExtResource("7_lwews")]
+}
+
+[sub_resource type="Animation" id="Animation_xnh0e"]
+resource_name = "death"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3ukem")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.51),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ux4fo"]
+resource_name = "disabling"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_82xgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3ukem")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb1qb"]
+_data = {
+"RESET": SubResource("Animation_82xgd"),
+"death": SubResource("Animation_xnh0e"),
+"disabling": SubResource("Animation_ux4fo"),
+"moving": SubResource("Animation_tjcn0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uay6h"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yd5qa"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_egd6q"]
+animation = &"disabling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ma25u"]
+animation = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pn2x8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_156y2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0pkl"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0b1rg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7kiae"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oklme"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lui4n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yi8dt"]
+states/End/position = Vector2(907, 112)
+states/RESET/node = SubResource("AnimationNodeAnimation_uay6h")
+states/RESET/position = Vector2(274, 70)
+states/Start/position = Vector2(95, 91)
+states/death/node = SubResource("AnimationNodeAnimation_yd5qa")
+states/death/position = Vector2(702, 46)
+states/disabling/node = SubResource("AnimationNodeAnimation_egd6q")
+states/disabling/position = Vector2(590, 126)
+states/moving/node = SubResource("AnimationNodeAnimation_ma25u")
+states/moving/position = Vector2(436, 59)
+transitions = ["RESET", "moving", SubResource("AnimationNodeStateMachineTransition_pn2x8"), "moving", "death", SubResource("AnimationNodeStateMachineTransition_156y2"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_j0pkl"), "death", "End", SubResource("AnimationNodeStateMachineTransition_0b1rg"), "moving", "disabling", SubResource("AnimationNodeStateMachineTransition_7kiae"), "disabling", "death", SubResource("AnimationNodeStateMachineTransition_oklme"), "disabling", "End", SubResource("AnimationNodeStateMachineTransition_lui4n")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eymve"]
 size = Vector2(64, 64)
@@ -15,11 +205,25 @@ size = Vector2(32, 32)
 script = ExtResource("1_mvdjr")
 health = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kb1qb")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kb1qb")
+}
+tree_root = SubResource("AnimationNodeStateMachine_yi8dt")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_gqdem")
+modulate = Color(0.443137, 0.329412, 0.411765, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3ukem")
 
 [node name="Disable_Area" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -43,6 +247,7 @@ shape = SubResource("RectangleShape2D_eymve")
 one_shot = true
 
 [node name="Clickable_Area" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
